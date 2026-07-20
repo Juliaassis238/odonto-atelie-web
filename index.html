@@ -11,20 +11,20 @@
 <style>
 /* ==========================================================================
    Odonto Ateliê — Agendamento Odontológico
-   Paleta: Azul Meia-Noite, Champagne, Areia, Dourado Suave
+   Paleta: Azul Meia-Noite, Champagne, Branco, Dourado Suave
    ========================================================================== */
 
 :root {
   --ink: #111B29; /* Azul Meia-Noite Profundo */
   --ink-soft: #2C3E50; /* Azul Naval */
-  --mint: #E8DCC4; /* Champagne/Areia */
+  --mint: #E8DCC4; /* Champagne/Areia (Bege) */
   --mint-pale: #F9F6F0; /* Bege muito pálido */
   --ivory: #FFFFFF; /* Branco puro */
   --coral: #C89F70; /* Dourado Suave / Champagne Escuro */
   --coral-dark: #A67B5B; /* Bronze/Dourado Envelhecido */
   --charcoal: #1A1A1A; /* Quase preto */
-  --line: rgba(17, 27, 41, 0.14); /* Linha baseada no novo ink */
-  --shadow: 0 20px 50px -25px rgba(17, 27, 41, 0.35); /* Sombra baseada no novo ink */
+  --line: rgba(17, 27, 41, 0.14);
+  --shadow: 0 20px 50px -25px rgba(17, 27, 41, 0.35);
 
   --font-display: "Fraunces", "Iowan Old Style", serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -160,18 +160,33 @@ a { color: inherit; }
 }
 .btn-outline:hover { background: var(--ink); color: #ffffff; }
 
+/* Botão especial para a capa (fundo azul) */
+.hero .btn-primary {
+  background: var(--mint);
+  color: var(--ink);
+  border-color: var(--mint);
+}
+.hero .btn-primary:hover { background: transparent; color: var(--ivory); border-color: var(--ivory); }
+
+.hero .btn-outline {
+  border-color: var(--ivory);
+  color: var(--ivory);
+}
+.hero .btn-outline:hover { background: var(--ivory); color: var(--ink); }
+
 .nav-cta { display: none; }
 @media (min-width: 720px) { .nav-cta { display: inline-flex; } }
 
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  padding: 120px 0 56px;
+  padding: 140px 0 80px;
   overflow: hidden;
-  background: #ffffff;
-  background-image: url('fundo-abstrato-minimalista-odonto-atelie.png'); /* Novo fundo abstrato */
+  background-color: var(--ink);
+  background-image: url('fundo-azul-sofisticado.png'); /* Novo fundo azul sofisticado */
   background-size: cover;
   background-position: center;
+  color: var(--ivory); /* Texto base branco na capa */
 }
 
 .hero-inner {
@@ -184,46 +199,24 @@ a { color: inherit; }
   .hero-inner { grid-template-columns: 1.1fr 0.9fr; }
 }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 0.7rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--coral-dark);
-  margin-bottom: 26px;
-  font-weight: 600;
+.hero .eyebrow {
+  color: var(--mint); /* Bege (Champagne) */
 }
 
-.eyebrow::before {
-  content: "";
-  width: 32px;
-  height: 1px;
-  background: var(--coral-dark);
+.hero .eyebrow::before {
+  background: var(--mint);
 }
 
 .hero h1 {
-  font-family: var(--font-display);
-  font-size: clamp(2.6rem, 5.4vw, 4.1rem);
-  line-height: 1.04;
-  color: var(--ink);
-  margin: 0 0 26px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  color: var(--ivory); /* Branco */
 }
 
 .hero h1 em {
-  font-style: italic;
-  color: var(--coral-dark);
+  color: var(--mint); /* Bege (Champagne) */
 }
 
 .hero p.lede {
-  font-size: 1.08rem;
-  color: var(--ink-soft);
-  max-width: 46ch;
-  margin: 0 0 40px;
-  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85); /* Branco suave */
 }
 
 .hero-actions {
@@ -234,9 +227,10 @@ a { color: inherit; }
 
 .hero-figure {
   position: relative;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 4px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
   padding: 44px;
   min-height: 340px;
   display: flex;
@@ -244,7 +238,7 @@ a { color: inherit; }
 }
 
 .hero-card {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 2px;
   padding: 0;
   width: 100%;
@@ -257,6 +251,7 @@ a { color: inherit; }
   padding: 15px 0;
   border-bottom: 1px solid var(--line);
   font-size: 0.9rem;
+  color: var(--charcoal); /* Texto interno do card volta ao padrão */
 }
 .hero-card-row:first-child { padding-top: 0; }
 .hero-card-row:last-child { border-bottom: none; padding-bottom: 0; }
@@ -270,7 +265,7 @@ a { color: inherit; }
   border-radius: 50%;
   margin-right: 10px;
 }
-.status-dot.free { background: #4a9b7f; /* Manter um verde para 'disponível' */ }
+.status-dot.free { background: #4a9b7f; }
 .status-dot.busy { background: var(--coral-dark); }
 
 /* Signature divider */
@@ -280,7 +275,7 @@ a { color: inherit; }
   margin: 10px 0 0;
 }
 .smile-divider svg { width: 100%; height: 100%; display: block; }
-.smile-divider path { stroke: var(--ink); opacity: 0.35; } /* Ajustar cor do SVG */
+.smile-divider path { stroke: var(--ivory); opacity: 0.25; }
 
 /* ---------- Sections ---------- */
 section { padding: 116px 0; background: #ffffff; }
@@ -324,7 +319,7 @@ section { padding: 116px 0; background: #ffffff; }
   position: relative;
 }
 
-.service-card:hover { background: var(--mint-pale); } /* Hover mais suave */
+.service-card:hover { background: var(--mint-pale); }
 
 .service-index {
   font-family: var(--font-display);
@@ -607,7 +602,7 @@ section { padding: 116px 0; background: #ffffff; }
 @media (min-width: 900px) { .about-grid { grid-template-columns: 0.85fr 1.15fr; } }
 
 .about-figure {
-  position: relative; /* Para posicionar o mascote */
+  position: relative;
   border: 1px solid var(--line);
   border-radius: 4px;
   min-height: 300px;
@@ -621,18 +616,19 @@ section { padding: 116px 0; background: #ffffff; }
 
 .mascote-flutuante {
   position: absolute;
-  top: -80px; /* Ajuste conforme necessário */
-  right: -80px; /* Ajuste conforme necessário */
-  width: 200px; /* Tamanho do mascote */
+  top: -80px;
+  right: -80px;
+  width: 200px;
   height: auto;
-  animation: float 3s ease-in-out infinite;
+  animation: float 3.5s ease-in-out infinite;
   z-index: 10;
+  filter: drop-shadow(0 10px 20px rgba(17, 27, 41, 0.2));
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0px); }
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
 }
 
 .stat-row { display: flex; gap: 36px; }
@@ -747,6 +743,7 @@ footer.site-footer {
   section { padding: 72px 0; }
   .hero { padding: 64px 0 32px; }
   .panel { padding: 28px; }
+  .mascote-flutuante { width: 140px; top: -60px; right: -20px; }
 }
 
 </style>
@@ -793,7 +790,7 @@ footer.site-footer {
     </div>
     <div class="smile-divider" aria-hidden="true">
       <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
-        <path d="M0,10 Q600,70 1200,10" fill="none" stroke="var(--ink)" stroke-width="1.4" opacity="0.35"/>
+        <path d="M0,10 Q600,70 1200,10" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.35"/>
       </svg>
     </div>
   </section>
@@ -990,11 +987,9 @@ footer.site-footer {
 </div>
 
 <script type="module">
-  // Firebase App (the core library) is always required and must be listed first
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
   import { getFirestore, collection, getDocs, addDoc, query, where, orderBy, limit, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
-  // TODO: Replace the following with your app's Firebase project configuration
   const firebaseConfig = {
     apiKey: "YOUR_API_KEY",
     authDomain: "YOUR_AUTH_DOMAIN",
@@ -1004,11 +999,9 @@ footer.site-footer {
     appId: "YOUR_APP_ID"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  // --- UI Elements ---
   const servicePicker = document.getElementById('servicePicker');
   const calendarMonthLabel = document.getElementById('calendarMonthLabel');
   const calendarGrid = document.getElementById('calendarGrid');
@@ -1025,7 +1018,6 @@ footer.site-footer {
   const adminList = document.getElementById('adminList');
   const adminEmpty = document.getElementById('adminEmpty');
 
-  // --- State ---
   let selectedService = null;
   let selectedDate = null;
   let selectedSlot = null;
@@ -1039,8 +1031,6 @@ footer.site-footer {
     { id: 'implante', name: 'Avaliação para implante', duration: 60 },
     { id: 'urgencia', name: 'Urgência odontológica', duration: 40 },
   ];
-
-  // --- Functions ---
 
   function renderServices() {
     servicePicker.innerHTML = '';
@@ -1070,7 +1060,6 @@ footer.site-footer {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    // Render day of week headers
     ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'].forEach(day => {
       const dow = document.createElement('div');
       dow.className = 'dow';
@@ -1078,7 +1067,6 @@ footer.site-footer {
       calendarGrid.appendChild(dow);
     });
 
-    // Render empty cells for days before the 1st
     for (let i = 0; i < startDay; i++) {
       const emptyCell = document.createElement('button');
       emptyCell.className = 'day-cell empty';
@@ -1086,7 +1074,6 @@ footer.site-footer {
       calendarGrid.appendChild(emptyCell);
     }
 
-    // Render days of the month
     for (let i = 1; i <= endDate; i++) {
       const dayCell = document.createElement('button');
       const date = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), i);
@@ -1094,7 +1081,7 @@ footer.site-footer {
 
       dayCell.className = 'day-cell';
       dayCell.textContent = i;
-      dayCell.disabled = date < today; // Disable past days
+      dayCell.disabled = date < today;
 
       if (date.getTime() === today.getTime()) {
         dayCell.classList.add('today');
@@ -1116,7 +1103,7 @@ footer.site-footer {
   async function renderTimeSlots() {
     slotsWrap.innerHTML = '';
     slotsTitle.textContent = 'Escolha um horário disponível:';
-    selectedSlot = null; // Reset selected slot
+    selectedSlot = null;
 
     if (!selectedService || !selectedDate) {
       slotsTitle.textContent = 'Selecione um serviço e uma data.';
@@ -1124,9 +1111,9 @@ footer.site-footer {
     }
 
     const startOfDay = new Date(selectedDate);
-    startOfDay.setHours(8, 0, 0, 0); // Clínica abre às 8h
+    startOfDay.setHours(8, 0, 0, 0);
     const endOfDay = new Date(selectedDate);
-    endOfDay.setHours(18, 0, 0, 0); // Clínica fecha às 18h
+    endOfDay.setHours(18, 0, 0, 0);
 
     const appointmentsRef = collection(db, 'appointments');
     const q = query(appointmentsRef, where('date', '==', selectedDate.toISOString().split('T')[0]));
@@ -1134,14 +1121,11 @@ footer.site-footer {
     const bookedSlots = querySnapshot.docs.map(doc => doc.data().time);
 
     let availableSlotsFound = false;
-    for (let time = startOfDay.getTime(); time < endOfDay.getTime(); time += 30 * 60 * 1000) { // Slots de 30 em 30 min
+    for (let time = startOfDay.getTime(); time < endOfDay.getTime(); time += 30 * 60 * 1000) {
       const slotTime = new Date(time);
       const slotTimeStr = slotTime.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
-      // Check if the slot is already booked
       const isBooked = bookedSlots.includes(slotTimeStr);
-
-      // Check if there's enough time for the selected service
       const serviceEndTime = new Date(slotTime.getTime() + selectedService.duration * 60 * 1000);
       const isServiceTooLong = serviceEndTime.getTime() > endOfDay.getTime();
 
@@ -1213,14 +1197,13 @@ footer.site-footer {
       confirmProtocol.textContent = `Protocolo: ${docRef.id.substring(0, 8).toUpperCase()}`;
       confirmOverlay.hidden = false;
 
-      // Reset form and state
       bookingForm.reset();
       selectedService = null;
       selectedDate = null;
       selectedSlot = null;
       renderServices();
       renderCalendar();
-      renderTimeSlots(); // To clear slots
+      renderTimeSlots();
       updateSummary();
 
     } catch (e) {
@@ -1231,7 +1214,6 @@ footer.site-footer {
     }
   }
 
-  // --- Admin Panel ---
   async function renderAdminPanel() {
     adminList.innerHTML = '';
     adminEmpty.style.display = 'none';
@@ -1265,14 +1247,13 @@ footer.site-footer {
         const id = e.target.dataset.id;
         if (confirm('Tem certeza que deseja cancelar este agendamento?')) {
           await deleteDoc(doc(db, 'appointments', id));
-          renderAdminPanel(); // Re-render after deletion
-          renderTimeSlots(); // Update public slots
+          renderAdminPanel();
+          renderTimeSlots();
         }
       });
     });
   }
 
-  // --- Event Listeners ---
   document.getElementById('prevMonth').addEventListener('click', () => {
     currentMonth.setMonth(currentMonth.getMonth() - 1);
     renderCalendar();
@@ -1301,7 +1282,6 @@ footer.site-footer {
     confirmOverlay.hidden = true;
   });
 
-  // --- Initial Render ---
   renderServices();
   renderCalendar();
   updateSummary();
