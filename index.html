@@ -10,33 +10,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ==========================================================================
-   Odonto Ateliê — Agendamento Odontológico
-   Paleta: Azul Meia-Noite, Champagne, Branco, Dourado Suave
+   Odonto Ateliê — Estilos Visuais
    ========================================================================== */
 
 :root {
-  --ink: #111B29; /* Azul Meia-Noite Profundo */
-  --ink-soft: #2C3E50; /* Azul Naval */
-  --mint: #E8DCC4; /* Champagne/Areia (Bege) */
-  --mint-pale: #F9F6F0; /* Bege muito pálido */
-  --ivory: #FFFFFF; /* Branco puro */
-  --coral: #C89F70; /* Dourado Suave / Champagne Escuro */
-  --coral-dark: #A67B5B; /* Bronze/Dourado Envelhecido */
-  --charcoal: #1A1A1A; /* Quase preto */
+  --ink: #111B29;
+  --ink-soft: #2C3E50;
+  --mint: #E8DCC4;
+  --mint-pale: #F9F6F0;
+  --ivory: #FFFFFF;
+  --coral: #C89F70;
+  --coral-dark: #A67B5B;
+  --charcoal: #1A1A1A;
   --line: rgba(17, 27, 41, 0.14);
   --shadow: 0 20px 50px -25px rgba(17, 27, 41, 0.35);
-
   --font-display: "Fraunces", "Iowan Old Style", serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-
   --radius: 18px;
-  --radius-sm: 10px;
 }
 
 * { box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
-
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -46,1201 +40,379 @@ body {
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
 }
-
 img { max-width: 100%; display: block; }
-
 a { color: inherit; }
-
-.container {
-  width: 100%;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 32px;
-}
-
-:focus-visible {
-  outline: 1px solid var(--ink);
-  outline-offset: 4px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
-}
+.container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 32px; }
 
 /* ---------- Header ---------- */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  background: #ffffff;
-  border-bottom: 1px solid var(--line);
-}
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px 32px;
-  max-width: 1180px;
-  margin: 0 auto;
-}
-
-.brand {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-  text-decoration: none;
-}
-
-.brand-mark {
-  font-family: var(--font-display);
-  font-size: 1.42rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-}
-
-.brand-sub {
-  font-size: 0.64rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-top: 6px;
-  opacity: 0.75;
-}
-
-.main-nav {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-}
-
-.main-nav a {
-  text-decoration: none;
-  font-size: 0.76rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  font-weight: 600;
-  padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease, color 0.2s ease;
-}
-
-.main-nav a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+.site-header { position: sticky; top: 0; z-index: 40; background: #ffffff; border-bottom: 1px solid var(--line); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 24px 32px; max-width: 1180px; margin: 0 auto; }
+.brand { display: flex; flex-direction: column; line-height: 1; text-decoration: none; }
+.brand-mark { font-family: var(--font-display); font-size: 1.42rem; font-weight: 600; color: var(--ink); }
+.brand-sub { font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); margin-top: 6px; opacity: 0.75; }
+.main-nav { display: flex; gap: 40px; align-items: center; }
+.main-nav a { text-decoration: none; font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; }
+.main-nav a:hover { color: var(--ink); }
 
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 15px 30px;
-  border-radius: 2px;
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 600;
-  text-decoration: none;
-  border: 1px solid var(--ink);
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-  font-family: var(--font-body);
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 15px 30px; border-radius: 2px; font-size: 0.78rem; letter-spacing: 0.08em;
+  text-transform: uppercase; font-weight: 600; text-decoration: none; border: 1px solid var(--ink);
+  cursor: pointer; transition: 0.2s ease;
 }
-
-.btn-primary {
-  background: var(--ink);
-  color: #ffffff;
-}
+.btn-primary { background: var(--ink); color: #ffffff; }
 .btn-primary:hover { background: #ffffff; color: var(--ink); }
+.btn-outline { background: transparent; border-color: var(--ink); color: var(--ink); }
 
-.btn-outline {
-  background: transparent;
-  border-color: var(--ink);
-  color: var(--ink);
-}
-.btn-outline:hover { background: var(--ink); color: #ffffff; }
-
-.hero .btn-primary {
-  background: var(--mint);
-  color: var(--ink);
-  border-color: var(--mint);
-}
+.hero .btn-primary { background: var(--mint); color: var(--ink); border-color: var(--mint); }
 .hero .btn-primary:hover { background: transparent; color: var(--ivory); border-color: var(--ivory); }
-
-.hero .btn-outline {
-  border-color: var(--ivory);
-  color: var(--ivory);
-}
+.hero .btn-outline { border-color: var(--ivory); color: var(--ivory); }
 .hero .btn-outline:hover { background: var(--ivory); color: var(--ink); }
-
-.nav-cta { display: none; }
-@media (min-width: 720px) { .nav-cta { display: inline-flex; } }
 
 /* ---------- Hero ---------- */
 .hero {
-  position: relative;
-  padding: 140px 0 80px;
-  overflow: hidden;
-  background-color: var(--ink);
-  background-image: url('fundo-azul-sofisticado.png');
-  background-size: cover;
-  background-position: center;
-  color: var(--ivory);
+  position: relative; padding: 140px 0 80px; background-color: var(--ink);
+  background-image: url('fundo-azul-sofisticado.png'); background-size: cover;
+  background-position: center; color: var(--ivory);
 }
+.hero-inner { display: grid; gap: 64px; align-items: center; }
+@media (min-width: 900px) { .hero-inner { grid-template-columns: 1.1fr 0.9fr; } }
+.hero h1 { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.1; margin: 0 0 24px; }
+.hero h1 em { font-style: italic; color: var(--mint); }
+.hero p.lede { font-size: 1.15rem; max-width: 48ch; margin-bottom: 40px; color: rgba(255, 255, 255, 0.85); }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
 
-.hero-inner {
-  display: grid;
-  gap: 64px;
-  align-items: center;
-}
-
-@media (min-width: 900px) {
-  .hero-inner { grid-template-columns: 1.1fr 0.9fr; }
-}
-
-.hero .eyebrow {
-  color: var(--mint);
-}
-
-.hero .eyebrow::before {
-  background: var(--mint);
-}
-
-.hero h1 {
-  color: var(--ivory);
-}
-
-.hero h1 em {
-  color: var(--mint);
-}
-
-.hero p.lede {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.hero-actions {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-/* Redesenho do Quadro de Horários */
-.hero-figure {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+.hero-figure { display: flex; align-items: center; justify-content: center; }
 .hero-card {
-  background: rgba(255, 255, 255, 0.98);
-  border-radius: var(--radius);
-  padding: 24px;
-  width: 100%;
-  max-width: 360px;
-  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.98); border-radius: var(--radius); padding: 24px;
+  width: 100%; max-width: 360px; box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3);
 }
-
-.hero-card-title {
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  color: var(--ink);
-  margin-bottom: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 12px;
-}
-
-.hero-card-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 0.88rem;
-  color: var(--charcoal);
-}
-.hero-card-row:last-child { border-bottom: none; padding-bottom: 0; }
-.hero-card-row .label { color: var(--ink-soft); display: flex; align-items: center; }
-.hero-card-row .value { font-weight: 600; color: var(--ink); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; }
-
-.status-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin-right: 12px;
-}
+.hero-card-title { font-family: var(--font-display); font-size: 0.9rem; color: var(--ink); margin-bottom: 16px; font-weight: 600; text-transform: uppercase; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+.hero-card-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 0.88rem; color: var(--charcoal); }
+.hero-card-row:last-child { border-bottom: none; }
+.status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 12px; }
 .status-dot.free { background: #4a9b7f; }
 .status-dot.busy { background: var(--coral-dark); }
 
-/* Mascote Fixo (Sticky) */
-.mascote-container {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 100;
-  pointer-events: none;
-}
+/* Mascote Fixo */
+.mascote-container { position: fixed; bottom: 30px; right: 30px; z-index: 100; pointer-events: none; }
+.mascote-flutuante { width: 140px; height: auto; animation: float 3.5s ease-in-out infinite; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.25)); pointer-events: auto; cursor: pointer; }
+@keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
 
-.mascote-flutuante {
-  width: 140px;
-  height: auto;
-  animation: float 3.5s ease-in-out infinite;
-  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.25));
-  pointer-events: auto;
-  cursor: pointer;
-}
+/* ---------- Booking ---------- */
+section { padding: 116px 0; }
+.section-head { max-width: 60ch; margin: 0 auto 64px; text-align: center; }
+.section-head h2 { font-family: var(--font-display); font-size: clamp(1.9rem, 3.6vw, 2.7rem); color: var(--ink); margin: 0 0 16px; }
 
-@keyframes float {
-  0% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(3deg); }
-  100% { transform: translateY(0px) rotate(0deg); }
-}
+.booking-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+@media (min-width: 880px) { .booking-grid { grid-template-columns: 1fr 1fr; } }
+.panel { background: #ffffff; padding: 44px; }
+.panel h3 { font-family: var(--font-display); font-size: 1.18rem; margin: 0 0 6px; color: var(--ink); }
 
-/* Signature divider */
-.smile-divider {
-  width: 100%;
-  height: 64px;
-  margin: 10px 0 0;
-}
-.smile-divider svg { width: 100%; height: 100%; display: block; }
-.smile-divider path { stroke: var(--ivory); opacity: 0.25; }
+.service-picker { display: grid; gap: 10px; margin-bottom: 32px; }
+.chip { display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--line); padding: 14px 16px; cursor: pointer; font-size: 0.88rem; }
+.chip.selected { border: 1px solid var(--ink); background: var(--mint-pale); }
+.chip-duration { font-size: 0.72rem; text-transform: uppercase; color: var(--ink-soft); }
 
-/* ---------- Sections ---------- */
-section { padding: 116px 0; background: #ffffff; }
-
-.section-head {
-  max-width: 60ch;
-  margin: 0 auto 64px;
-  text-align: center;
-}
-
-.section-head .eyebrow { justify-content: center; }
-.section-head .eyebrow::before { display: none; }
-
-.section-head h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.9rem, 3.6vw, 2.7rem);
-  color: var(--ink);
-  margin: 0 0 16px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-}
-
-.section-head p {
-  color: var(--ink-soft);
-  font-size: 1.02rem;
-}
-
-/* Services */
-.services-grid {
-  display: grid;
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}
-
-.service-card {
-  background: #ffffff;
-  padding: 40px 32px;
-  transition: background 0.2s ease;
-  position: relative;
-}
-
-.service-card:hover { background: var(--mint-pale); }
-
-.service-index {
-  font-family: var(--font-display);
-  font-size: 0.8rem;
-  color: var(--coral-dark);
-  letter-spacing: 0.1em;
-  font-weight: 600;
-}
-
-.service-card h3 {
-  font-family: var(--font-display);
-  font-size: 1.28rem;
-  margin: 14px 0 10px;
-  color: var(--ink);
-  font-weight: 500;
-  letter-spacing: -0.01em;
-}
-
-.service-card p {
-  color: var(--ink-soft);
-  font-size: 0.92rem;
-  margin: 0;
-}
-
-.service-meta {
-  margin-top: 20px;
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-  opacity: 0.8;
-}
-
-/* Booking section */
-.booking-section { background: #ffffff; }
-
-.booking-section .section-head h2 { color: var(--ink); }
-.booking-section .section-head p { color: var(--ink-soft); }
-.booking-section .eyebrow { color: var(--coral-dark); }
-.booking-section .eyebrow::before { background: var(--coral-dark); }
-
-.steps {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  margin-bottom: 56px;
-  flex-wrap: wrap;
-}
-
-.step {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.76rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  opacity: 0.45;
-  font-weight: 600;
-}
-.step.active { color: var(--ink); opacity: 1; }
-.step-num {
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.72rem;
-  font-family: var(--font-display);
-  color: var(--ink-soft);
-}
-.step.active .step-num { background: var(--ink); border-color: var(--ink); color: #ffffff; }
-
-.booking-grid {
-  display: grid;
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-}
-
-@media (min-width: 880px) {
-  .booking-grid { grid-template-columns: 1fr 1fr; }
-}
-
-.panel {
-  background: #ffffff;
-  padding: 44px;
-}
-
-.panel h3 {
-  font-family: var(--font-display);
-  font-size: 1.18rem;
-  margin: 0 0 6px;
-  color: var(--ink);
-  font-weight: 500;
-}
-.panel .panel-sub { font-size: 0.85rem; color: var(--ink-soft); margin: 0 0 28px; }
-
-/* Service picker chips */
-.service-picker {
-  display: grid;
-  gap: 10px;
-  margin-bottom: 32px;
-}
-
-.chip {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid var(--line);
-  border-radius: 2px;
-  padding: 14px 16px;
-  cursor: pointer;
-  font-size: 0.88rem;
-  background: #ffffff;
-  transition: border-color 0.15s ease;
-}
-.chip.selected { border: 1px solid var(--ink); }
-.chip.selected span:first-child { font-weight: 600; color: var(--ink); }
-.chip .chip-duration { font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-soft); }
-
-/* Calendar */
-.calendar-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 18px;
-}
-.calendar-nav button {
-  background: none; border: 1px solid var(--line); border-radius: 50%;
-  width: 30px; height: 30px; cursor: pointer; font-size: 0.95rem; color: var(--ink);
-  transition: border-color 0.15s ease;
-}
-.calendar-nav button:hover { border-color: var(--ink); }
-.calendar-month { font-family: var(--font-display); font-weight: 500; color: var(--ink); text-transform: capitalize; letter-spacing: -0.01em; }
-
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
-  text-align: center;
-}
-
-.calendar-grid .dow {
-  font-size: 0.62rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ink-soft);
-  padding-bottom: 10px;
-  opacity: 0.7;
-}
-
-.day-cell {
-  aspect-ratio: 1;
-  border: 1px solid transparent;
-  border-radius: 50%;
-  background: transparent;
-  font-size: 0.86rem;
-  color: var(--charcoal);
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  position: relative;
-  transition: border-color 0.15s ease;
-}
-.day-cell:hover:not(:disabled) { border-color: var(--line); }
+.calendar-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }
+.day-cell { aspect-ratio: 1; border: 1px solid transparent; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.86rem; }
 .day-cell:disabled { color: #d4d4d4; cursor: not-allowed; }
-.day-cell.today { font-weight: 700; }
-.day-cell.selected { border-color: var(--ink); color: var(--ink); font-weight: 600; }
-.day-cell.has-slots::after {
-  content: "";
-  position: absolute; bottom: 5px; width: 3px; height: 3px; border-radius: 50%;
-  background: var(--coral-dark);
-}
-.day-cell.empty { visibility: hidden; }
+.day-cell.selected { border-color: var(--ink); font-weight: 600; }
 
-/* Time slots */
-.slots-title { font-size: 0.84rem; color: var(--ink-soft); margin: 28px 0 12px; }
-.slots-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
-  gap: 8px;
-}
-.slot-btn {
-  padding: 11px 6px;
-  border-radius: 2px;
-  border: 1px solid var(--line);
-  background: #ffffff;
-  font-size: 0.84rem;
-  cursor: pointer;
-  color: var(--ink);
-  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
-}
-.slot-btn:hover:not(:disabled) { border-color: var(--ink); }
-.slot-btn.selected { background: var(--ink); border-color: var(--ink); color: #ffffff; font-weight: 600; }
-.slot-btn:disabled {
-  background: #ffffff;
-  color: #d4d4d4;
-  cursor: not-allowed;
-  border-color: var(--line);
-  text-decoration: line-through;
-}
-.empty-note { font-size: 0.86rem; color: var(--ink-soft); padding: 10px 2px; }
+.slots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 8px; margin-top: 20px; }
+.slot-btn { padding: 11px 6px; border: 1px solid var(--line); background: #ffffff; cursor: pointer; font-size: 0.84rem; }
+.slot-btn.selected { background: var(--ink); color: #ffffff; }
+.slot-btn:disabled { color: #d4d4d4; text-decoration: line-through; cursor: not-allowed; }
 
-/* Form */
 .field { margin-bottom: 18px; }
-.field label {
-  display: block;
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-bottom: 8px;
-  font-weight: 600;
-}
-.field input, .field textarea, .field select {
-  width: 100%;
-  padding: 13px 14px;
-  border-radius: 2px;
-  border: 1px solid var(--line);
-  background: #ffffff;
-  font-family: var(--font-body);
-  font-size: 0.94rem;
-  color: var(--charcoal);
-  transition: border-color 0.15s ease;
-}
-.field input:focus, .field textarea:focus, .field select:focus {
-  outline: none; border-color: var(--ink);
-}
-.field textarea { resize: vertical; min-height: 76px; }
+.field label { display: block; font-size: 0.72rem; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
+.field input, .field textarea { width: 100%; padding: 13px 14px; border: 1px solid var(--line); font-family: var(--font-body); }
 
-.summary-box {
-  background: #ffffff;
-  border: 1px solid var(--line);
-  border-radius: 2px;
-  padding: 16px 18px;
-  font-size: 0.86rem;
-  color: var(--ink-soft);
-  margin-bottom: 24px;
-}
-.summary-box strong { color: var(--ink); }
+.summary-box { background: var(--mint-pale); border: 1px solid var(--line); padding: 16px 18px; font-size: 0.86rem; margin-bottom: 24px; }
 
-.form-msg {
-  font-size: 0.85rem;
-  padding: 12px 14px;
-  border-radius: 2px;
-  margin-bottom: 16px;
-  border: 1px solid var(--line);
-}
-.form-msg.error { border-color: var(--coral-dark); color: var(--coral-dark); }
-.form-msg.success { border-color: var(--ink); color: var(--ink); }
-
-/* Confirmation */
-.confirm-panel { text-align: center; padding: 52px 30px; }
-.confirm-icon {
-  width: 52px; height: 52px; margin: 0 auto 22px;
-  border-radius: 50%; border: 1px solid var(--line);
-  display: flex; align-items: center; justify-content: center;
-}
-.confirm-panel h3 { font-family: var(--font-display); font-size: 1.4rem; color: var(--ink); margin: 0 0 12px; font-weight: 500; }
-.confirm-panel p { color: var(--ink-soft); margin: 0 0 26px; }
-.protocol {
-  display: inline-block;
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  letter-spacing: 0.08em;
-  padding: 12px 24px;
-  border: 1px solid var(--line);
-  border-radius: 2px;
-  margin-bottom: 26px;
-  color: var(--ink);
-}
-
-/* Team / About */
-.about-grid {
-  display: grid;
-  gap: 56px;
-  align-items: center;
-}
-@media (min-width: 900px) { .about-grid { grid-template-columns: 0.85fr 1.15fr; } }
-
-.about-figure {
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  min-height: 300px;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 18px;
-  background: #ffffff;
-}
-
-.stat-row { display: flex; gap: 36px; }
-.stat { }
-.stat .num { font-family: var(--font-display); font-size: 2.1rem; color: var(--ink); font-weight: 500; }
-.stat .cap { font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); margin-top: 4px; }
-
-.about-copy h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
-  color: var(--ink);
-  margin: 0 0 20px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-}
-.about-copy p { color: var(--ink-soft); margin-bottom: 18px; }
-.about-list { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 14px; }
-.about-list li {
-  display: flex; gap: 14px; font-size: 0.94rem; color: var(--ink-soft);
-  padding-left: 0;
-}
-.about-list li::before {
-  content: "";
-  width: 5px; height: 5px; border-radius: 50%;
-  background: var(--coral-dark);
-  margin-top: 9px;
-  flex-shrink: 0;
-}
-
-/* Contact / Footer */
-.contact-section {
-  background: #ffffff;
-  border-top: 1px solid var(--line);
-}
-.contact-grid {
-  display: grid;
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-}
-.contact-card {
-  background: #ffffff;
-  padding: 32px;
-}
-.contact-card h4 {
-  font-family: var(--font-display);
-  color: var(--ink);
-  margin: 0 0 10px;
-  font-size: 1rem;
-  font-weight: 500;
-}
-.contact-card p { margin: 0; color: var(--ink-soft); font-size: 0.9rem; }
-
-footer.site-footer {
-  background: #ffffff;
-  color: var(--ink-soft);
-  padding: 44px 0 30px;
-  font-size: 0.86rem;
-  border-top: 1px solid var(--line);
-}
-.footer-inner {
-  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
-}
-.footer-links { display: flex; gap: 24px; }
-.footer-links a { text-decoration: none; color: var(--ink-soft); font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; }
-.footer-links a:hover { color: var(--ink); }
-.footer-admin-link {
-  background: none; border: none; color: var(--ink-soft);
-  font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase;
-  cursor: pointer; text-decoration: underline;
-  padding: 0;
-  opacity: 0.7;
-}
-
-/* Admin panel (modal) */
-.modal-overlay {
-  position: fixed; inset: 0; background: rgba(20,20,20,0.5);
-  display: flex; align-items: center; justify-content: center;
-  padding: 20px; z-index: 100;
-}
+/* ---------- Admin ---------- */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 100; }
 .modal-overlay[hidden] { display: none; }
-.modal-box {
-  background: #ffffff; border-radius: 4px; border: 1px solid var(--line);
-  width: 100%; max-width: 480px;
-  padding: 36px;
-  max-height: 86vh; overflow-y: auto;
-}
-.modal-box.wide { max-width: 720px; }
-.modal-box h3 { font-family: var(--font-display); color: var(--ink); margin-top: 0; font-weight: 500; }
-.modal-close {
-  float: right; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--ink-soft);
-}
-
-.admin-list { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 10px; }
-.admin-item {
-  border: 1px solid var(--line); border-radius: 2px;
-  padding: 14px 16px; display: flex; justify-content: space-between; gap: 10px; align-items: center;
-  font-size: 0.88rem;
-}
+.modal-box { background: #ffffff; padding: 36px; width: 100%; max-width: 600px; max-height: 80vh; overflow-y: auto; position: relative; }
+.modal-close { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+.admin-item { border-bottom: 1px solid var(--line); padding: 16px 0; display: flex; justify-content: space-between; align-items: center; }
 .admin-item .who { font-weight: 600; color: var(--ink); }
-.admin-item .when { color: var(--ink-soft); font-size: 0.8rem; margin-top: 3px; }
-.admin-item button {
-  background: none; border: 1px solid var(--coral-dark); color: var(--coral-dark);
-  border-radius: 2px; padding: 7px 14px; font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer;
-}
-.admin-empty { color: var(--ink-soft); font-size: 0.88rem; margin-top: 18px; }
+.admin-item .when { font-size: 0.8rem; color: var(--ink-soft); }
 
 @media (max-width: 640px) {
   .header-inner { padding: 18px 20px; }
   .main-nav { display: none; }
-  section { padding: 72px 0; }
   .hero { padding: 64px 0 32px; }
-  .hero-card { max-width: 100%; padding: 20px; }
-  .mascote-container { bottom: 20px; right: 20px; }
   .mascote-flutuante { width: 100px; }
 }
-
 </style>
 </head>
 <body>
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="#top" class="brand">
+    <a href="#" class="brand">
       <span class="brand-mark">Odonto Ateliê</span>
       <span class="brand-sub">Clínica Odontológica</span>
     </a>
     <nav class="main-nav">
-      <a href="#servicos">Serviços</a>
       <a href="#agendar">Agendar</a>
-      <a href="#sobre">A clínica</a>
       <a href="#contato">Contato</a>
     </nav>
-    <a href="#agendar" class="btn btn-primary nav-cta">Agendar horário</a>
+    <a href="#agendar" class="btn btn-primary">Agendar horário</a>
   </div>
 </header>
 
-<!-- Mascote Fixo -->
 <div class="mascote-container">
-  <img src="mascote-odonto-atelie.png" alt="Mascote Odonto Ateliê" class="mascote-flutuante" onclick="document.getElementById('agendar').scrollIntoView()">
+  <img src="mascote-odonto-atelie.png" alt="Mascote" class="mascote-flutuante" onclick="document.getElementById('agendar').scrollIntoView()">
 </div>
 
-<main id="top">
-
+<main>
   <section class="hero">
     <div class="container hero-inner">
       <div>
-        <span class="eyebrow">Sorrisos cuidados com precisão</span>
-        <h1>Sua consulta odontológica, <em>agendada em minutos</em>.</h1>
-        <p class="lede">Escolha o serviço, veja os horários realmente disponíveis e confirme seu atendimento sem ligações nem espera. Simples para você, organizado para nossa equipe.</p>
+        <h1>Sua consulta, <em>agendada em minutos</em>.</h1>
+        <p class="lede">Escolha o serviço e veja os horários realmente disponíveis. Simples e rápido.</p>
         <div class="hero-actions">
-          <a href="#agendar" class="btn btn-primary">Agendar horário</a>
-          <a href="#servicos" class="btn btn-outline">Ver serviços</a>
+          <a href="#agendar" class="btn btn-primary">Agendar agora</a>
         </div>
       </div>
       <div class="hero-figure">
         <div class="hero-card">
           <div class="hero-card-title">Próximos horários</div>
-          <div class="hero-card-row"><span class="label"><span class="status-dot free"></span>Qui, 14h00</span><span class="value">Disponível</span></div>
-          <div class="hero-card-row"><span class="label"><span class="status-dot busy"></span>Qui, 15h20</span><span class="value">Ocupado</span></div>
-          <div class="hero-card-row"><span class="label"><span class="status-dot free"></span>Sex, 09h20</span><span class="value">Disponível</span></div>
+          <div id="nextSlots">
+            <div class="hero-card-row"><span class="label">Carregando horários...</span></div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="smile-divider" aria-hidden="true">
-      <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
-        <path d="M0,10 Q600,70 1200,10" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.35"/>
-      </svg>
-    </div>
   </section>
 
-  <section id="servicos">
+  <section id="agendar">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">O que tratamos</span>
-        <h2>Serviços disponíveis para agendamento</h2>
-        <p>Cada especialidade tem duração própria — o sistema reserva automaticamente o tempo certo na agenda.</p>
+        <h2>Reserve seu horário online</h2>
       </div>
-      <div class="services-grid">
-        <article class="service-card">
-          <span class="service-index">01</span>
-          <h3>Avaliação e diagnóstico</h3>
-          <p>Exame clínico completo, radiografias quando necessário e plano de tratamento personalizado.</p>
-          <div class="service-meta">Duração média: 40 min</div>
-        </article>
-        <article class="service-card">
-          <span class="service-index">02</span>
-          <h3>Limpeza e prevenção</h3>
-          <p>Profilaxia, remoção de tártaro e orientação de higiene para manter a saúde bucal em dia.</p>
-          <div class="service-meta">Duração média: 40 min</div>
-        </article>
-        <article class="service-card">
-          <span class="service-index">03</span>
-          <h3>Clareamento dental</h3>
-          <p>Protocolo clareador supervisionado, com avaliação de sensibilidade antes e depois.</p>
-          <div class="service-meta">Duração média: 1h</div>
-        </article>
-        <article class="service-card">
-          <span class="service-index">04</span>
-          <h3>Manutenção ortodôntica</h3>
-          <p>Ajuste de aparelho, troca de alinhadores e acompanhamento do plano de tratamento.</p>
-          <div class="service-meta">Duração média: 40 min</div>
-        </article>
-        <article class="service-card">
-          <span class="service-index">05</span>
-          <h3>Avaliação para implante</h3>
-          <p>Análise de imagem, planejamento cirúrgico e explicação detalhada das etapas.</p>
-          <div class="service-meta">Duração média: 1h</div>
-        </article>
-        <article class="service-card">
-          <span class="service-index">06</span>
-          <h3>Urgência odontológica</h3>
-          <p>Atendimento prioritário para dor aguda, fraturas e traumas dentários.</p>
-          <div class="service-meta">Duração média: 40 min</div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="booking-section" id="agendar">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Agendamento online</span>
-        <h2>Escolha o serviço, a data e o horário</h2>
-        <p>Os horários já ocupados aparecem bloqueados automaticamente — você só vê o que está realmente disponível.</p>
-      </div>
-
-      <div class="steps">
-        <div class="step active"><span class="step-num">1</span> Serviço</div>
-        <div class="step active"><span class="step-num">2</span> Data e horário</div>
-        <div class="step active"><span class="step-num">3</span> Seus dados</div>
-      </div>
-
       <div class="booking-grid">
         <div class="panel">
-          <h3>Serviço e calendário</h3>
-          <p class="panel-sub">Toque em um serviço e depois em uma data com disponibilidade.</p>
-
+          <h3>1. Escolha o serviço e data</h3>
           <div class="service-picker" id="servicePicker"></div>
-
           <div class="calendar-nav">
-            <button type="button" id="prevMonth" aria-label="Mês anterior">‹</button>
-            <span class="calendar-month" id="calendarMonthLabel"></span>
-            <button type="button" id="nextMonth" aria-label="Próximo mês">›</button>
+            <button id="prevMonth">‹</button>
+            <span id="calendarMonthLabel"></span>
+            <button id="nextMonth">›</button>
           </div>
           <div class="calendar-grid" id="calendarGrid"></div>
-
-          <p class="slots-title" id="slotsTitle">Escolha uma data no calendário para ver os horários.</p>
           <div class="slots-grid" id="slotsWrap"></div>
         </div>
-
         <div class="panel">
-          <h3>Confirmar agendamento</h3>
-          <p class="panel-sub">Preencha seus dados para concluir a reserva do horário.</p>
-
-          <div class="summary-box" id="summaryBox">Selecione o serviço, a data e o horário para continuar.</div>
-
-          <form id="bookingForm" novalidate>
-            <div id="formMsg" class="form-msg" style="display:none;"></div>
-            <div class="field">
-              <label for="fldName">Nome completo</label>
-              <input type="text" id="fldName" name="name" placeholder="Seu nome" required>
-            </div>
-            <div class="field">
-              <label for="fldPhone">Telefone / WhatsApp</label>
-              <input type="tel" id="fldPhone" name="phone" placeholder="(00) 00000-0000" required>
-            </div>
-            <div class="field">
-              <label for="fldNotes">Observações (opcional)</label>
-              <textarea id="fldNotes" name="notes" placeholder="Alergias, dor específica, convênio, etc."></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary" style="width:100%;">Confirmar agendamento</button>
+          <h3>2. Seus dados</h3>
+          <div class="summary-box" id="summaryBox">Selecione os detalhes ao lado.</div>
+          <form id="bookingForm">
+            <div class="field"><label>Nome completo</label><input type="text" id="fldName" required></div>
+            <div class="field"><label>WhatsApp</label><input type="tel" id="fldPhone" required></div>
+            <div class="field"><label>Observações</label><textarea id="fldNotes"></textarea></div>
+            <button type="submit" class="btn btn-primary" style="width:100%" id="btnSubmit" disabled>Confirmar Agendamento</button>
           </form>
         </div>
       </div>
     </div>
   </section>
-
-  <section id="sobre">
-    <div class="container about-grid">
-      <div class="about-figure">
-        <div class="stat-row">
-          <div class="stat"><div class="num">18</div><div class="cap">anos de clínica</div></div>
-          <div class="stat"><div class="num">6</div><div class="cap">especialidades</div></div>
-          <div class="stat"><div class="num">4.9</div><div class="cap">avaliação média</div></div>
-        </div>
-      </div>
-      <div class="about-copy">
-        <span class="eyebrow">A clínica</span>
-        <h2>Odontologia atenciosa, do primeiro contato ao pós-tratamento</h2>
-        <p>O Odonto Ateliê nasceu para transformar a experiência de ir ao dentista: agenda transparente, tempo de consulta respeitado e uma equipe que explica cada etapa do tratamento.</p>
-        <ul class="about-list">
-          <li>Consultórios equipados com tecnologia digital de imagem</li>
-          <li>Biossegurança seguindo os protocolos do Conselho Federal de Odontologia</li>
-          <li>Atendimento em português e inglês, com opção de telelembrete por WhatsApp</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="contact-section" id="contato">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Fale com a clínica</span>
-        <h2>Endereço, horário e contato</h2>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-card">
-          <h4>Endereço</h4>
-          <p>Rua das Orquídeas, 245 — Conjunto 12<br>Bairro Jardim das Flores</p>
-        </div>
-        <div class="contact-card">
-          <h4>Horário de atendimento</h4>
-          <p>Segunda a sexta, 08h às 18h<br>Sábado, 08h às 12h</p>
-        </div>
-        <div class="contact-card">
-          <h4>Contato direto</h4>
-          <p>(11) 4002-8922<br>contato@odontoatelie.com.br</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
 </main>
 
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <span>© 2026 Odonto Ateliê — Clínica Odontológica</span>
-    <div class="footer-links">
-      <a href="#servicos">Serviços</a>
-      <a href="#agendar">Agendar</a>
-      <a href="#contato">Contato</a>
-      <button type="button" class="footer-admin-link" id="adminLink">Acesso da equipe</button>
-    </div>
-  </div>
+<footer style="padding: 40px 0; border-top: 1px solid var(--line); text-align: center;">
+  <button id="adminLink" style="background:none; border:none; color:var(--ink-soft); cursor:pointer; text-decoration:underline; font-size:0.8rem;">Acesso da equipe</button>
 </footer>
 
 <div class="modal-overlay" id="confirmOverlay" hidden>
-  <div class="modal-box">
-    <button type="button" class="modal-close" id="confirmClose" aria-label="Fechar">×</button>
-    <div class="confirm-panel">
-      <div class="confirm-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg>
-      </div>
-      <h3>Agendamento confirmado</h3>
-      <p id="confirmDetail"></p>
-      <span class="protocol" id="confirmProtocol"></span>
-      <div><button type="button" class="btn btn-outline" id="confirmClose2" onclick="document.getElementById('confirmOverlay').hidden=true">Fechar</button></div>
-    </div>
+  <div class="modal-box" style="text-align:center">
+    <button class="modal-close" id="confirmClose">×</button>
+    <h3 style="color:var(--ink)">Agendamento Confirmado!</h3>
+    <p id="confirmDetail"></p>
+    <p style="font-size:0.8rem; color:var(--ink-soft)">Protocolo: <span id="confirmProtocol"></span></p>
+    <button class="btn btn-primary" onclick="document.getElementById('confirmOverlay').hidden=true">Entendido</button>
   </div>
 </div>
 
 <div class="modal-overlay" id="adminOverlay" hidden>
-  <div class="modal-box wide">
-    <button type="button" class="modal-close" id="adminClose" aria-label="Fechar">×</button>
-    <h3>Agendamentos confirmados</h3>
-    <p class="panel-sub" style="margin-top:-8px;">Área de uso interno da equipe. Cancelar um horário libera o slot imediatamente para novos agendamentos.</p>
-    <ul class="admin-list" id="adminList"></ul>
-    <p class="admin-empty" id="adminEmpty" style="display:none;">Nenhum agendamento no momento.</p>
+  <div class="modal-box">
+    <button class="modal-close" id="adminClose">×</button>
+    <h3>Agendamentos da Clínica</h3>
+    <div id="adminList"></div>
   </div>
 </div>
 
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-  import { getFirestore, collection, getDocs, addDoc, query, where, orderBy, limit, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, query, where, orderBy, onSnapshot, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyDummyKey",
-    authDomain: "odonto-atelie.firebaseapp.com",
-    projectId: "odonto-atelie",
-    storageBucket: "odonto-atelie.appspot.com",
-    messagingSenderId: "123456789",
-    appId: "1:123456789:web:abcdef"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyCJzKFPONPZlb6pmvAZCmWkdMaALIuExtM",
+  authDomain: "dentistas-8048b.firebaseapp.com",
+  projectId: "dentistas-8048b",
+  storageBucket: "dentistas-8048b.firebasestorage.app",
+  messagingSenderId: "916688144510",
+  appId: "1:916688144510:web:bdcb16227330c8bf7b702f",
+  measurementId: "G-DW7G1YFBFN"
+};
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const colRef = collection(db, "appointments");
 
-  const servicePicker = document.getElementById('servicePicker');
-  const calendarMonthLabel = document.getElementById('calendarMonthLabel');
-  const calendarGrid = document.getElementById('calendarGrid');
-  const slotsTitle = document.getElementById('slotsTitle');
-  const slotsWrap = document.getElementById('slotsWrap');
-  const bookingForm = document.getElementById('bookingForm');
-  const summaryBox = document.getElementById('summaryBox');
-  const formMsg = document.getElementById('formMsg');
-  const confirmOverlay = document.getElementById('confirmOverlay');
-  const confirmDetail = document.getElementById('confirmDetail');
-  const confirmProtocol = document.getElementById('confirmProtocol');
-  const adminLink = document.getElementById('adminLink');
-  const adminOverlay = document.getElementById('adminOverlay');
-  const adminList = document.getElementById('adminList');
-  const adminEmpty = document.getElementById('adminEmpty');
+let state = {
+  services: [
+    { id: 'aval', name: 'Avaliação', duration: 40 },
+    { id: 'limp', name: 'Limpeza', duration: 40 },
+    { id: 'clar', name: 'Clareamento', duration: 60 },
+    { id: 'orto', name: 'Ortodontia', duration: 40 }
+  ],
+  selectedService: null,
+  selectedDate: null,
+  selectedSlot: null,
+  viewDate: new Date(),
+  appointments: []
+};
 
-  let selectedService = null;
-  let selectedDate = null;
-  let selectedSlot = null;
-  let currentMonth = new Date();
+// Real-time sync
+onSnapshot(colRef, (snapshot) => {
+  state.appointments = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  renderSlots();
+  renderNextSlots();
+  if (!document.getElementById('adminOverlay').hidden) renderAdmin();
+});
 
-  const services = [
-    { id: 'avaliacao', name: 'Avaliação e diagnóstico', duration: 40 },
-    { id: 'limpeza', name: 'Limpeza e prevenção', duration: 40 },
-    { id: 'clareamento', name: 'Clareamento dental', duration: 60 },
-    { id: 'ortodontia', name: 'Manutenção ortodôntica', duration: 40 },
-    { id: 'implante', name: 'Avaliação para implante', duration: 60 },
-    { id: 'urgencia', name: 'Urgência odontológica', duration: 40 },
-  ];
+function renderServices() {
+  const container = document.getElementById('servicePicker');
+  container.innerHTML = '';
+  state.services.forEach(s => {
+    const chip = document.createElement('div');
+    chip.className = `chip ${state.selectedService?.id === s.id ? 'selected' : ''}`;
+    chip.innerHTML = `<span>${s.name}</span><span class="chip-duration">${s.duration}m</span>`;
+    chip.onclick = () => { state.selectedService = s; renderServices(); renderSlots(); updateSummary(); };
+    container.appendChild(chip);
+  });
+}
 
-  function renderServices() {
-    servicePicker.innerHTML = '';
-    services.forEach(service => {
-      const chip = document.createElement('div');
-      chip.className = `chip ${selectedService && selectedService.id === service.id ? 'selected' : ''}`;
-      chip.innerHTML = `<span>${service.name}</span><span class="chip-duration">${service.duration} min</span>`;
-      chip.addEventListener('click', () => {
-        selectedService = service;
-        renderServices();
-        renderCalendar();
-        updateSummary();
-      });
-      servicePicker.appendChild(chip);
-    });
-  }
+function renderCalendar() {
+  const grid = document.getElementById('calendarGrid');
+  const label = document.getElementById('calendarMonthLabel');
+  grid.innerHTML = '';
+  
+  const year = state.viewDate.getFullYear();
+  const month = state.viewDate.getMonth();
+  label.textContent = new Date(year, month).toLocaleString('pt-BR', { month: 'long', year: 'numeric' });
 
-  function renderCalendar() {
-    calendarGrid.innerHTML = '';
-    calendarMonthLabel.textContent = currentMonth.toLocaleString('pt-BR', { month: 'long', year: 'numeric' });
+  const firstDay = new Date(year, month, 1).getDay();
+  const lastDate = new Date(year, month + 1, 0).getDate();
+  const today = new Date(); today.setHours(0,0,0,0);
 
-    const startDay = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1).getDay();
-    const endDate = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0).getDate();
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+  for (let i = 0; i < firstDay; i++) grid.appendChild(document.createElement('div'));
 
-    ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'].forEach(day => {
-      const dow = document.createElement('div');
-      dow.className = 'dow';
-      dow.textContent = day;
-      calendarGrid.appendChild(dow);
-    });
-
-    for (let i = 0; i < startDay; i++) {
-      const emptyCell = document.createElement('div');
-      emptyCell.className = 'day-cell empty';
-      calendarGrid.appendChild(emptyCell);
-    }
-
-    for (let i = 1; i <= endDate; i++) {
-      const dayCell = document.createElement('button');
-      const date = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), i);
-      date.setHours(0, 0, 0, 0);
-
-      dayCell.className = 'day-cell';
-      dayCell.textContent = i;
-      dayCell.disabled = date < today;
-
-      if (date.getTime() === today.getTime()) dayCell.classList.add('today');
-      if (selectedDate && date.getTime() === selectedDate.getTime()) dayCell.classList.add('selected');
-
-      dayCell.addEventListener('click', () => {
-        selectedDate = date;
-        renderCalendar();
-        renderTimeSlots();
-        updateSummary();
-      });
-      calendarGrid.appendChild(dayCell);
-    }
-  }
-
-  async function renderTimeSlots() {
-    slotsWrap.innerHTML = '<p class="empty-note">Carregando horários...</p>';
-    selectedSlot = null;
-
-    if (!selectedService || !selectedDate) {
-      slotsTitle.textContent = 'Selecione um serviço e uma data.';
-      slotsWrap.innerHTML = '';
-      return;
-    }
-
-    const dateKey = selectedDate.toISOString().split('T')[0];
-    const appointmentsRef = collection(db, 'appointments');
-    const q = query(appointmentsRef, where('date', '==', dateKey));
+  for (let d = 1; d <= lastDate; d++) {
+    const btn = document.createElement('button');
+    btn.className = 'day-cell';
+    btn.textContent = d;
+    const dateObj = new Date(year, month, d);
+    dateObj.setHours(0,0,0,0);
     
-    let bookedSlots = [];
-    try {
-      const querySnapshot = await getDocs(q);
-      bookedSlots = querySnapshot.docs.map(doc => doc.data().time);
-    } catch (e) {
-      console.warn("Firebase not configured, showing demo slots.");
-    }
+    if (dateObj < today) btn.disabled = true;
+    if (state.selectedDate?.getTime() === dateObj.getTime()) btn.classList.add('selected');
+    
+    btn.onclick = () => { state.selectedDate = dateObj; renderCalendar(); renderSlots(); updateSummary(); };
+    grid.appendChild(btn);
+  }
+}
 
-    slotsWrap.innerHTML = '';
-    slotsTitle.textContent = 'Escolha um horário disponível:';
+function renderSlots() {
+  const wrap = document.getElementById('slotsWrap');
+  wrap.innerHTML = '';
+  if (!state.selectedService || !state.selectedDate) return;
 
-    const startHour = 8, endHour = 18;
-    let availableSlotsFound = false;
+  const dateStr = state.selectedDate.toISOString().split('T')[0];
+  const booked = state.appointments.filter(a => a.date === dateStr).map(a => a.time);
 
-    for (let h = startHour; h < endHour; h++) {
-      for (let m of [0, 30]) {
-        const slotTimeStr = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
-        const isBooked = bookedSlots.includes(slotTimeStr);
-        
-        const slotBtn = document.createElement('button');
-        slotBtn.className = `slot-btn ${selectedSlot === slotTimeStr ? 'selected' : ''}`;
-        slotBtn.textContent = slotTimeStr;
-        slotBtn.disabled = isBooked;
-
-        if (!slotBtn.disabled) {
-          availableSlotsFound = true;
-          slotBtn.addEventListener('click', () => {
-            selectedSlot = slotTimeStr;
-            renderTimeSlots();
-            updateSummary();
-          });
-        }
-        slotsWrap.appendChild(slotBtn);
-      }
-    }
-
-    if (!availableSlotsFound) {
-      slotsTitle.textContent = 'Nenhum horário disponível para esta data.';
+  for (let h = 8; h < 18; h++) {
+    for (let m of ['00', '30']) {
+      const time = `${h.toString().padStart(2, '0')}:${m}`;
+      const btn = document.createElement('button');
+      btn.className = `slot-btn ${state.selectedSlot === time ? 'selected' : ''}`;
+      btn.textContent = time;
+      if (booked.includes(time)) btn.disabled = true;
+      btn.onclick = () => { state.selectedSlot = time; renderSlots(); updateSummary(); };
+      wrap.appendChild(btn);
     }
   }
+}
 
-  function updateSummary() {
-    if (selectedService && selectedDate && selectedSlot) {
-      summaryBox.innerHTML = `<strong>Serviço:</strong> ${selectedService.name}<br><strong>Data:</strong> ${selectedDate.toLocaleDateString('pt-BR')}<br><strong>Horário:</strong> ${selectedSlot}`;
-      bookingForm.querySelector('button[type="submit"]').disabled = false;
-    } else {
-      summaryBox.textContent = 'Selecione o serviço, a data e o horário para continuar.';
-      bookingForm.querySelector('button[type="submit"]').disabled = true;
-    }
+function renderNextSlots() {
+  const container = document.getElementById('nextSlots');
+  container.innerHTML = '';
+  const todayStr = new Date().toISOString().split('T')[0];
+  const bookedToday = state.appointments.filter(a => a.date === todayStr).map(a => a.time);
+  
+  const displaySlots = ['09:00', '14:00', '16:30'];
+  displaySlots.forEach(t => {
+    const isBusy = bookedToday.includes(t);
+    container.innerHTML += `<div class="hero-card-row"><span class="label"><span class="status-dot ${isBusy?'busy':'free'}"></span>Hoje, ${t}</span><span class="value">${isBusy?'Ocupado':'Livre'}</span></div>`;
+  });
+}
+
+function updateSummary() {
+  const box = document.getElementById('summaryBox');
+  const btn = document.getElementById('btnSubmit');
+  if (state.selectedService && state.selectedDate && state.selectedSlot) {
+    box.innerHTML = `<strong>${state.selectedService.name}</strong><br>${state.selectedDate.toLocaleDateString('pt-BR')} às ${state.selectedSlot}`;
+    btn.disabled = false;
+  } else {
+    box.textContent = 'Selecione os detalhes ao lado.';
+    btn.disabled = true;
   }
+}
 
-  async function submitBooking(event) {
-    event.preventDefault();
-    formMsg.style.display = 'none';
-
-    const name = document.getElementById('fldName').value;
-    const phone = document.getElementById('fldPhone').value;
-    const notes = document.getElementById('fldNotes').value;
-
-    if (!name || !phone || !selectedService || !selectedDate || !selectedSlot) return;
-
-    try {
-      const docRef = await addDoc(collection(db, 'appointments'), {
-        service: selectedService.name,
-        date: selectedDate.toISOString().split('T')[0],
-        time: selectedSlot,
-        name, phone, notes,
-        timestamp: new Date()
-      });
-
-      confirmDetail.innerHTML = `Seu agendamento para <strong>${selectedService.name}</strong> em <strong>${selectedDate.toLocaleDateString('pt-BR')}</strong> às <strong>${selectedSlot}</strong> foi confirmado.`;
-      confirmProtocol.textContent = `Protocolo: ${docRef.id.substring(0, 8).toUpperCase()}`;
-      confirmOverlay.hidden = false;
-      bookingForm.reset();
-      selectedService = selectedDate = selectedSlot = null;
-      renderServices(); renderCalendar(); renderTimeSlots(); updateSummary();
-    } catch (e) {
-      alert("Agendamento simulado com sucesso! (Configure o Firebase para salvar permanentemente)");
-      confirmOverlay.hidden = false;
-    }
-  }
-
-  async function renderAdminPanel() {
-    adminList.innerHTML = '<p class="admin-empty">Carregando agendamentos...</p>';
-    try {
-      const querySnapshot = await getDocs(query(collection(db, 'appointments'), orderBy('date', 'desc'), limit(50)));
-      adminList.innerHTML = '';
-      if (querySnapshot.empty) { adminEmpty.style.display = 'block'; return; }
-      querySnapshot.forEach(docSnap => {
-        const data = docSnap.data();
-        const li = document.createElement('li');
-        li.className = 'admin-item';
-        li.innerHTML = `<div><div class="who">${data.name} (${data.phone})</div><div class="when">${data.service} em ${data.date} às ${data.time}</div></div><button type="button" onclick="deleteAppointment('${docSnap.id}')">Cancelar</button>`;
-        adminList.appendChild(li);
-      });
-    } catch (e) {
-      adminList.innerHTML = '<p class="admin-empty">Configure o Firebase para gerenciar agendamentos reais.</p>';
-    }
-  }
-
-  window.deleteAppointment = async (id) => {
-    if (confirm('Cancelar este agendamento?')) {
-      try { await deleteDoc(doc(db, 'appointments', id)); renderAdminPanel(); renderTimeSlots(); } catch(e) {}
-    }
+document.getElementById('bookingForm').onsubmit = async (e) => {
+  e.preventDefault();
+  const data = {
+    service: state.selectedService.name,
+    date: state.selectedDate.toISOString().split('T')[0],
+    time: state.selectedSlot,
+    name: document.getElementById('fldName').value,
+    phone: document.getElementById('fldPhone').value,
+    notes: document.getElementById('fldNotes').value,
+    createdAt: new Date()
   };
+  const docRef = await addDoc(colRef, data);
+  document.getElementById('confirmDetail').textContent = `${data.service} em ${state.selectedDate.toLocaleDateString('pt-BR')} às ${data.time}`;
+  document.getElementById('confirmProtocol').textContent = docRef.id.toUpperCase().substring(0,8);
+  document.getElementById('confirmOverlay').hidden = false;
+  state.selectedSlot = null; updateSummary();
+};
 
-  document.getElementById('prevMonth').addEventListener('click', () => { currentMonth.setMonth(currentMonth.getMonth() - 1); renderCalendar(); });
-  document.getElementById('nextMonth').addEventListener('click', () => { currentMonth.setMonth(currentMonth.getMonth() + 1); renderCalendar(); });
-  bookingForm.addEventListener('submit', submitBooking);
-  adminLink.addEventListener('click', (e) => { e.preventDefault(); adminOverlay.hidden = false; renderAdminPanel(); });
-  document.getElementById('adminClose').addEventListener('click', () => adminOverlay.hidden = true);
-  document.getElementById('confirmClose').addEventListener('click', () => confirmOverlay.hidden = true);
+function renderAdmin() {
+  const list = document.getElementById('adminList');
+  list.innerHTML = '';
+  const sorted = [...state.appointments].sort((a,b) => b.createdAt - a.createdAt);
+  sorted.forEach(a => {
+    const item = document.createElement('div');
+    item.className = 'admin-item';
+    item.innerHTML = `<div><div class="who">${a.name} (${a.phone})</div><div class="when">${a.service} - ${a.date} às ${a.time}</div></div>`;
+    const delBtn = document.createElement('button');
+    delBtn.textContent = 'Remover';
+    delBtn.style = 'color:red; cursor:pointer; background:none; border:1px solid red; padding:4px 8px;';
+    delBtn.onclick = () => { if(confirm('Remover agendamento?')) deleteDoc(doc(db, "appointments", a.id)); };
+    item.appendChild(delBtn);
+    list.appendChild(item);
+  });
+}
 
-  renderServices(); renderCalendar();
+document.getElementById('prevMonth').onclick = () => { state.viewDate.setMonth(state.viewDate.getMonth() - 1); renderCalendar(); };
+document.getElementById('nextMonth').onclick = () => { state.viewDate.setMonth(state.viewDate.getMonth() + 1); renderCalendar(); };
+document.getElementById('adminLink').onclick = () => { document.getElementById('adminOverlay').hidden = false; renderAdmin(); };
+document.getElementById('adminClose').onclick = () => document.getElementById('adminOverlay').hidden = true;
+document.getElementById('confirmClose').onclick = () => document.getElementById('confirmOverlay').hidden = true;
+
+renderServices(); renderCalendar(); renderNextSlots();
 </script>
 </body>
 </html>
