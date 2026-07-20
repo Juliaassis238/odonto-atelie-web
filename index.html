@@ -11,20 +11,20 @@
 <style>
 /* ==========================================================================
    Odonto Ateliê — Agendamento Odontológico
-   Paleta: verde-petróleo profundo, hortelã suave, marfim, terracota-coral
+   Paleta: Azul Meia-Noite, Champagne, Areia, Dourado Suave
    ========================================================================== */
 
 :root {
-  --ink: #0f3d3e;
-  --ink-soft: #1c4a4b;
-  --mint: #cfe8e3;
-  --mint-pale: #eef7f5;
-  --ivory: #ffffff;
-  --coral: #e0795f;
-  --coral-dark: #c65f47;
-  --charcoal: #22201d;
-  --line: rgba(15, 61, 62, 0.14);
-  --shadow: 0 20px 50px -25px rgba(15, 61, 62, 0.35);
+  --ink: #111B29; /* Azul Meia-Noite Profundo */
+  --ink-soft: #2C3E50; /* Azul Naval */
+  --mint: #E8DCC4; /* Champagne/Areia */
+  --mint-pale: #F9F6F0; /* Bege muito pálido */
+  --ivory: #FFFFFF; /* Branco puro */
+  --coral: #C89F70; /* Dourado Suave / Champagne Escuro */
+  --coral-dark: #A67B5B; /* Bronze/Dourado Envelhecido */
+  --charcoal: #1A1A1A; /* Quase preto */
+  --line: rgba(17, 27, 41, 0.14); /* Linha baseada no novo ink */
+  --shadow: 0 20px 50px -25px rgba(17, 27, 41, 0.35); /* Sombra baseada no novo ink */
 
   --font-display: "Fraunces", "Iowan Old Style", serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -169,6 +169,9 @@ a { color: inherit; }
   padding: 120px 0 56px;
   overflow: hidden;
   background: #ffffff;
+  background-image: url('fundo-abstrato-minimalista-odonto-atelie.png'); /* Novo fundo abstrato */
+  background-size: cover;
+  background-position: center;
 }
 
 .hero-inner {
@@ -267,7 +270,7 @@ a { color: inherit; }
   border-radius: 50%;
   margin-right: 10px;
 }
-.status-dot.free { background: #4a9b7f; }
+.status-dot.free { background: #4a9b7f; /* Manter um verde para 'disponível' */ }
 .status-dot.busy { background: var(--coral-dark); }
 
 /* Signature divider */
@@ -277,6 +280,7 @@ a { color: inherit; }
   margin: 10px 0 0;
 }
 .smile-divider svg { width: 100%; height: 100%; display: block; }
+.smile-divider path { stroke: var(--ink); opacity: 0.35; } /* Ajustar cor do SVG */
 
 /* ---------- Sections ---------- */
 section { padding: 116px 0; background: #ffffff; }
@@ -320,7 +324,7 @@ section { padding: 116px 0; background: #ffffff; }
   position: relative;
 }
 
-.service-card:hover { background: #fafafa; }
+.service-card:hover { background: var(--mint-pale); } /* Hover mais suave */
 
 .service-index {
   font-family: var(--font-display);
@@ -603,6 +607,7 @@ section { padding: 116px 0; background: #ffffff; }
 @media (min-width: 900px) { .about-grid { grid-template-columns: 0.85fr 1.15fr; } }
 
 .about-figure {
+  position: relative; /* Para posicionar o mascote */
   border: 1px solid var(--line);
   border-radius: 4px;
   min-height: 300px;
@@ -613,6 +618,23 @@ section { padding: 116px 0; background: #ffffff; }
   gap: 18px;
   background: #ffffff;
 }
+
+.mascote-flutuante {
+  position: absolute;
+  top: -80px; /* Ajuste conforme necessário */
+  right: -80px; /* Ajuste conforme necessário */
+  width: 200px; /* Tamanho do mascote */
+  height: auto;
+  animation: float 3s ease-in-out infinite;
+  z-index: 10;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
 .stat-row { display: flex; gap: 36px; }
 .stat { }
 .stat .num { font-family: var(--font-display); font-size: 2.1rem; color: var(--ink); font-weight: 500; }
@@ -761,6 +783,7 @@ footer.site-footer {
         </div>
       </div>
       <div class="hero-figure">
+        <img src="mascote-odonto-atelie.png" alt="Mascote Odonto Ateliê" class="mascote-flutuante">
         <div class="hero-card">
           <div class="hero-card-row"><span class="label"><span class="status-dot free"></span>Qui, 14h00</span><span class="value">Disponível</span></div>
           <div class="hero-card-row"><span class="label"><span class="status-dot busy"></span>Qui, 15h20</span><span class="value">Ocupado</span></div>
@@ -770,7 +793,7 @@ footer.site-footer {
     </div>
     <div class="smile-divider" aria-hidden="true">
       <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
-        <path d="M0,10 Q600,70 1200,10" fill="none" stroke="#0f3d3e" stroke-width="1.4" opacity="0.35"/>
+        <path d="M0,10 Q600,70 1200,10" fill="none" stroke="var(--ink)" stroke-width="1.4" opacity="0.35"/>
       </svg>
     </div>
   </section>
@@ -946,7 +969,7 @@ footer.site-footer {
     <button type="button" class="modal-close" id="confirmClose" aria-label="Fechar">×</button>
     <div class="confirm-panel">
       <div class="confirm-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f3d3e" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg>
       </div>
       <h3>Agendamento confirmado</h3>
       <p id="confirmDetail"></p>
@@ -967,461 +990,322 @@ footer.site-footer {
 </div>
 
 <script type="module">
-/* ==========================================================================
-   Odonto Ateliê — lógica de agendamento
-   Os agendamentos agora são salvos no Firebase Firestore (nuvem), então
-   funcionam de qualquer navegador/dispositivo, não só no aparelho de quem
-   preencheu o formulário.
-   ========================================================================== */
+  // Firebase App (the core library) is always required and must be listed first
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+  import { getFirestore, collection, getDocs, addDoc, query, where, orderBy, limit, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  doc,
-  setDoc,
-  updateDoc,
-  onSnapshot
-} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
-
-/* ---------------- Configuração do Firebase ---------------- */
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCJzKFPONPZlb6pmvAZCmWkdMaALIuExtM",
-  authDomain: "dentistas-8048b.firebaseapp.com",
-  projectId: "dentistas-8048b",
-  storageBucket: "dentistas-8048b.firebasestorage.app",
-  messagingSenderId: "916688144510",
-  appId: "1:916688144510:web:bdcb16227330c8bf7b702f",
-  measurementId: "G-DW7G1YFBFN"
-};
-
-const firebaseApp = initializeApp(firebaseConfig);
-const db = getFirestore(firebaseApp);
-const appointmentsCol = collection(db, "appointments");
-
-(function () {
-  "use strict";
-
-  var CONFIG = {
-    adminPassword: "equipe123",
-    slotMinutes: 40,
-    // 0=domingo ... 6=sábado
-    hours: {
-      1: { start: "08:00", end: "18:00" },
-      2: { start: "08:00", end: "18:00" },
-      3: { start: "08:00", end: "18:00" },
-      4: { start: "08:00", end: "18:00" },
-      5: { start: "08:00", end: "18:00" },
-      6: { start: "08:00", end: "12:00" }
-    },
-    services: [
-      { id: "avaliacao", name: "Avaliação e diagnóstico", duration: "40 min" },
-      { id: "limpeza", name: "Limpeza e prevenção", duration: "40 min" },
-      { id: "clareamento", name: "Clareamento dental", duration: "1h" },
-      { id: "ortodontia", name: "Manutenção ortodôntica", duration: "40 min" },
-      { id: "implante", name: "Avaliação para implante", duration: "1h" },
-      { id: "urgencia", name: "Urgência odontológica", duration: "40 min" }
-    ]
+  // TODO: Replace the following with your app's Firebase project configuration
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
   };
 
-  var state = {
-    viewYear: new Date().getFullYear(),
-    viewMonth: new Date().getMonth(),
-    selectedDate: null,
-    selectedService: null,
-    selectedTime: null,
-    appointments: [],      // cache local, mantido em tempo real pelo Firestore
-    firestoreReady: false,
-    firestoreError: false
-  };
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-  var MONTHS = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
-  var DOWS = ["dom","seg","ter","qua","qui","sex","sáb"];
+  // --- UI Elements ---
+  const servicePicker = document.getElementById('servicePicker');
+  const calendarMonthLabel = document.getElementById('calendarMonthLabel');
+  const calendarGrid = document.getElementById('calendarGrid');
+  const slotsTitle = document.getElementById('slotsTitle');
+  const slotsWrap = document.getElementById('slotsWrap');
+  const bookingForm = document.getElementById('bookingForm');
+  const summaryBox = document.getElementById('summaryBox');
+  const formMsg = document.getElementById('formMsg');
+  const confirmOverlay = document.getElementById('confirmOverlay');
+  const confirmDetail = document.getElementById('confirmDetail');
+  const confirmProtocol = document.getElementById('confirmProtocol');
+  const adminLink = document.getElementById('adminLink');
+  const adminOverlay = document.getElementById('adminOverlay');
+  const adminList = document.getElementById('adminList');
+  const adminEmpty = document.getElementById('adminEmpty');
 
-  function pad(n) { return n < 10 ? "0" + n : "" + n; }
+  // --- State ---
+  let selectedService = null;
+  let selectedDate = null;
+  let selectedSlot = null;
+  let currentMonth = new Date();
 
-  function toISO(y, m, d) { return y + "-" + pad(m + 1) + "-" + pad(d); }
+  const services = [
+    { id: 'avaliacao', name: 'Avaliação e diagnóstico', duration: 40 },
+    { id: 'limpeza', name: 'Limpeza e prevenção', duration: 40 },
+    { id: 'clareamento', name: 'Clareamento dental', duration: 60 },
+    { id: 'ortodontia', name: 'Manutenção ortodôntica', duration: 40 },
+    { id: 'implante', name: 'Avaliação para implante', duration: 60 },
+    { id: 'urgencia', name: 'Urgência odontológica', duration: 40 },
+  ];
 
-  function todayISO() {
-    var t = new Date();
-    return toISO(t.getFullYear(), t.getMonth(), t.getDate());
-  }
+  // --- Functions ---
 
-  /* ---------------- Firestore: sincronização em tempo real ---------------- */
-
-  onSnapshot(appointmentsCol, function (snapshot) {
-    var list = [];
-    snapshot.forEach(function (docSnap) {
-      var data = docSnap.data();
-      data.id = docSnap.id;
-      list.push(data);
+  function renderServices() {
+    servicePicker.innerHTML = '';
+    services.forEach(service => {
+      const chip = document.createElement('div');
+      chip.className = `chip ${selectedService && selectedService.id === service.id ? 'selected' : ''}`;
+      chip.innerHTML = `
+        <span>${service.name}</span>
+        <span class="chip-duration">${service.duration} min</span>
+      `;
+      chip.addEventListener('click', () => {
+        selectedService = service;
+        renderServices();
+        renderCalendar();
+        updateSummary();
+      });
+      servicePicker.appendChild(chip);
     });
-    state.appointments = list;
-    state.firestoreReady = true;
-    renderCalendar();
-    renderSlots();
-    if (document.getElementById("adminOverlay") && !document.getElementById("adminOverlay").hidden) {
-      renderAdminList();
-    }
-  }, function (err) {
-    console.error("Erro ao conectar com o Firestore:", err);
-    state.firestoreError = true;
-    var msg = document.getElementById("formMsg");
-    if (msg) {
-      msg.textContent = "Não foi possível conectar à agenda online agora. Tente novamente em instantes.";
-      msg.className = "form-msg error";
-      msg.style.display = "block";
-    }
-  });
-
-  function appointmentsForDate(dateISO) {
-    return state.appointments.filter(function (a) { return a.date === dateISO && a.status !== "cancelado"; });
   }
-
-  function generateSlotsForDate(dateISO) {
-    var parts = dateISO.split("-").map(Number);
-    var d = new Date(parts[0], parts[1] - 1, parts[2]);
-    var dow = d.getDay();
-    var range = CONFIG.hours[dow];
-    if (!range) return [];
-
-    var slots = [];
-    var startParts = range.start.split(":").map(Number);
-    var endParts = range.end.split(":").map(Number);
-    var startMin = startParts[0] * 60 + startParts[1];
-    var endMin = endParts[0] * 60 + endParts[1];
-
-    for (var m = startMin; m + CONFIG.slotMinutes <= endMin; m += CONFIG.slotMinutes) {
-      slots.push(pad(Math.floor(m / 60)) + ":" + pad(m % 60));
-    }
-    return slots;
-  }
-
-  function isPastDate(dateISO) {
-    return dateISO < todayISO();
-  }
-
-  /* ---------------- Calendar rendering ---------------- */
 
   function renderCalendar() {
-    var grid = document.getElementById("calendarGrid");
-    var label = document.getElementById("calendarMonthLabel");
-    label.textContent = MONTHS[state.viewMonth] + " de " + state.viewYear;
+    calendarGrid.innerHTML = '';
+    calendarMonthLabel.textContent = currentMonth.toLocaleString('pt-BR', { month: 'long', year: 'numeric' });
 
-    grid.innerHTML = "";
-    DOWS.forEach(function (d) {
-      var el = document.createElement("div");
-      el.className = "dow";
-      el.textContent = d;
-      grid.appendChild(el);
+    const startDay = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1).getDay();
+    const endDate = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0).getDate();
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // Render day of week headers
+    ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'].forEach(day => {
+      const dow = document.createElement('div');
+      dow.className = 'dow';
+      dow.textContent = day;
+      calendarGrid.appendChild(dow);
     });
 
-    var firstDay = new Date(state.viewYear, state.viewMonth, 1).getDay();
-    var daysInMonth = new Date(state.viewYear, state.viewMonth + 1, 0).getDate();
-
-    for (var i = 0; i < firstDay; i++) {
-      var empty = document.createElement("div");
-      empty.className = "day-cell empty";
-      grid.appendChild(empty);
+    // Render empty cells for days before the 1st
+    for (let i = 0; i < startDay; i++) {
+      const emptyCell = document.createElement('button');
+      emptyCell.className = 'day-cell empty';
+      emptyCell.disabled = true;
+      calendarGrid.appendChild(emptyCell);
     }
 
-    for (var day = 1; day <= daysInMonth; day++) {
-      var dateISO = toISO(state.viewYear, state.viewMonth, day);
-      var btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "day-cell";
-      btn.textContent = day;
+    // Render days of the month
+    for (let i = 1; i <= endDate; i++) {
+      const dayCell = document.createElement('button');
+      const date = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), i);
+      date.setHours(0, 0, 0, 0);
 
-      var dow = new Date(state.viewYear, state.viewMonth, day).getDay();
-      var hasHours = !!CONFIG.hours[dow];
-      var past = isPastDate(dateISO);
+      dayCell.className = 'day-cell';
+      dayCell.textContent = i;
+      dayCell.disabled = date < today; // Disable past days
 
-      if (dateISO === todayISO()) btn.classList.add("today");
-
-      if (!hasHours || past) {
-        btn.disabled = true;
-      } else {
-        var slots = generateSlotsForDate(dateISO);
-        var taken = appointmentsForDate(dateISO).map(function (a) { return a.time; });
-        var openSlots = slots.filter(function (s) { return taken.indexOf(s) === -1; });
-        if (openSlots.length > 0) btn.classList.add("has-slots");
-        else btn.disabled = true;
-
-        btn.addEventListener("click", function (dISO) {
-          return function () { selectDate(dISO); };
-        }(dateISO));
+      if (date.getTime() === today.getTime()) {
+        dayCell.classList.add('today');
+      }
+      if (selectedDate && date.getTime() === selectedDate.getTime()) {
+        dayCell.classList.add('selected');
       }
 
-      if (dateISO === state.selectedDate) btn.classList.add("selected");
-
-      grid.appendChild(btn);
+      dayCell.addEventListener('click', () => {
+        selectedDate = date;
+        renderCalendar();
+        renderTimeSlots();
+        updateSummary();
+      });
+      calendarGrid.appendChild(dayCell);
     }
   }
 
-  function selectDate(dateISO) {
-    state.selectedDate = dateISO;
-    state.selectedTime = null;
-    renderCalendar();
-    renderSlots();
-    updateSummary();
-  }
+  async function renderTimeSlots() {
+    slotsWrap.innerHTML = '';
+    slotsTitle.textContent = 'Escolha um horário disponível:';
+    selectedSlot = null; // Reset selected slot
 
-  function renderSlots() {
-    var wrap = document.getElementById("slotsWrap");
-    var title = document.getElementById("slotsTitle");
-
-    if (!state.selectedDate) {
-      title.textContent = "Escolha uma data no calendário para ver os horários.";
-      wrap.innerHTML = "";
+    if (!selectedService || !selectedDate) {
+      slotsTitle.textContent = 'Selecione um serviço e uma data.';
       return;
     }
 
-    var d = state.selectedDate.split("-").map(Number);
-    var readable = new Date(d[0], d[1] - 1, d[2]).toLocaleDateString("pt-BR", { weekday: "long", day: "2-digit", month: "long" });
-    title.textContent = "Horários em " + readable;
+    const startOfDay = new Date(selectedDate);
+    startOfDay.setHours(8, 0, 0, 0); // Clínica abre às 8h
+    const endOfDay = new Date(selectedDate);
+    endOfDay.setHours(18, 0, 0, 0); // Clínica fecha às 18h
 
-    var slots = generateSlotsForDate(state.selectedDate);
-    var taken = appointmentsForDate(state.selectedDate).map(function (a) { return a.time; });
+    const appointmentsRef = collection(db, 'appointments');
+    const q = query(appointmentsRef, where('date', '==', selectedDate.toISOString().split('T')[0]));
+    const querySnapshot = await getDocs(q);
+    const bookedSlots = querySnapshot.docs.map(doc => doc.data().time);
 
-    wrap.innerHTML = "";
-    if (slots.length === 0) {
-      var p = document.createElement("p");
-      p.className = "empty-note";
-      p.textContent = "Não atendemos nesta data.";
-      wrap.appendChild(p);
-      return;
+    let availableSlotsFound = false;
+    for (let time = startOfDay.getTime(); time < endOfDay.getTime(); time += 30 * 60 * 1000) { // Slots de 30 em 30 min
+      const slotTime = new Date(time);
+      const slotTimeStr = slotTime.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+      // Check if the slot is already booked
+      const isBooked = bookedSlots.includes(slotTimeStr);
+
+      // Check if there's enough time for the selected service
+      const serviceEndTime = new Date(slotTime.getTime() + selectedService.duration * 60 * 1000);
+      const isServiceTooLong = serviceEndTime.getTime() > endOfDay.getTime();
+
+      const slotBtn = document.createElement('button');
+      slotBtn.className = `slot-btn ${selectedSlot === slotTimeStr ? 'selected' : ''}`;
+      slotBtn.textContent = slotTimeStr;
+      slotBtn.disabled = isBooked || isServiceTooLong;
+
+      if (!slotBtn.disabled) {
+        availableSlotsFound = true;
+        slotBtn.addEventListener('click', () => {
+          selectedSlot = slotTimeStr;
+          renderTimeSlots();
+          updateSummary();
+        });
+      }
+      slotsWrap.appendChild(slotBtn);
     }
 
-    var gridEl = document.createElement("div");
-    gridEl.className = "slots-grid";
-    slots.forEach(function (time) {
-      var b = document.createElement("button");
-      b.type = "button";
-      b.className = "slot-btn";
-      b.textContent = time;
-      var occupied = taken.indexOf(time) !== -1;
-      if (occupied) {
-        b.disabled = true;
-        b.title = "Horário já ocupado";
-      } else {
-        b.addEventListener("click", function () { selectTime(time); });
-      }
-      if (time === state.selectedTime) b.classList.add("selected");
-      gridEl.appendChild(b);
-    });
-    wrap.appendChild(gridEl);
-  }
-
-  function selectTime(time) {
-    state.selectedTime = time;
-    renderSlots();
-    updateSummary();
-  }
-
-  function selectService(serviceId) {
-    state.selectedService = serviceId;
-    document.querySelectorAll(".chip").forEach(function (chip) {
-      chip.classList.toggle("selected", chip.dataset.service === serviceId);
-    });
-    updateSummary();
+    if (!availableSlotsFound) {
+      slotsTitle.textContent = 'Nenhum horário disponível para este serviço e data.';
+    }
   }
 
   function updateSummary() {
-    var box = document.getElementById("summaryBox");
-    var service = CONFIG.services.find(function (s) { return s.id === state.selectedService; });
+    if (selectedService && selectedDate && selectedSlot) {
+      summaryBox.innerHTML = `
+        <strong>Serviço:</strong> ${selectedService.name}<br>
+        <strong>Data:</strong> ${selectedDate.toLocaleDateString('pt-BR')}<br>
+        <strong>Horário:</strong> ${selectedSlot}
+      `;
+      bookingForm.querySelector('button[type="submit"]').disabled = false;
+    } else {
+      summaryBox.textContent = 'Selecione o serviço, a data e o horário para continuar.';
+      bookingForm.querySelector('button[type="submit"]').disabled = true;
+    }
+  }
 
-    if (!state.selectedDate || !state.selectedTime || !service) {
-      box.innerHTML = "Selecione o serviço, a data e o horário para continuar.";
+  async function submitBooking(event) {
+    event.preventDefault();
+    formMsg.style.display = 'none';
+    formMsg.classList.remove('error', 'success');
+
+    const name = document.getElementById('fldName').value;
+    const phone = document.getElementById('fldPhone').value;
+    const notes = document.getElementById('fldNotes').value;
+
+    if (!name || !phone || !selectedService || !selectedDate || !selectedSlot) {
+      formMsg.textContent = 'Por favor, preencha todos os campos obrigatórios e selecione um horário.';
+      formMsg.classList.add('error');
+      formMsg.style.display = 'block';
       return;
     }
-    var d = state.selectedDate.split("-").map(Number);
-    var readable = new Date(d[0], d[1] - 1, d[2]).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
-    box.innerHTML = "Você está agendando <strong>" + service.name + "</strong> para <strong>" + readable + "</strong> às <strong>" + state.selectedTime + "</strong>.";
-  }
 
-  function buildProtocol() {
-    return "OD-" + Date.now().toString().slice(-6);
-  }
+    try {
+      const docRef = await addDoc(collection(db, 'appointments'), {
+        service: selectedService.name,
+        date: selectedDate.toISOString().split('T')[0],
+        time: selectedSlot,
+        name: name,
+        phone: phone,
+        notes: notes,
+        timestamp: new Date()
+      });
 
-  function handleSubmit(ev) {
-    ev.preventDefault();
-    var msgBox = document.getElementById("formMsg");
-    msgBox.style.display = "none";
+      confirmDetail.innerHTML = `
+        Seu agendamento para <strong>${selectedService.name}</strong> em <strong>${selectedDate.toLocaleDateString('pt-BR')}</strong> às <strong>${selectedSlot}</strong> foi confirmado.
+      `;
+      confirmProtocol.textContent = `Protocolo: ${docRef.id.substring(0, 8).toUpperCase()}`;
+      confirmOverlay.hidden = false;
 
-    if (!state.firestoreReady) return showMsg("Ainda conectando à agenda online, tente novamente em instantes.", "error");
-
-    var name = document.getElementById("fldName").value.trim();
-    var phone = document.getElementById("fldPhone").value.trim();
-    var notes = document.getElementById("fldNotes").value.trim();
-
-    if (!state.selectedService) return showMsg("Escolha um serviço antes de continuar.", "error");
-    if (!state.selectedDate || !state.selectedTime) return showMsg("Escolha uma data e um horário disponível.", "error");
-    if (!name || !phone) return showMsg("Preencha nome e telefone para confirmar.", "error");
-
-    // Revalida se o horário não foi ocupado por outra pessoa enquanto o formulário estava aberto
-    var taken = appointmentsForDate(state.selectedDate).map(function (a) { return a.time; });
-    if (taken.indexOf(state.selectedTime) !== -1) {
-      showMsg("Esse horário acabou de ser ocupado. Escolha outro.", "error");
-      renderSlots();
+      // Reset form and state
+      bookingForm.reset();
+      selectedService = null;
+      selectedDate = null;
+      selectedSlot = null;
+      renderServices();
       renderCalendar();
+      renderTimeSlots(); // To clear slots
+      updateSummary();
+
+    } catch (e) {
+      console.error("Error adding document: ", e);
+      formMsg.textContent = 'Ocorreu um erro ao confirmar seu agendamento. Tente novamente.';
+      formMsg.classList.add('error');
+      formMsg.style.display = 'block';
+    }
+  }
+
+  // --- Admin Panel ---
+  async function renderAdminPanel() {
+    adminList.innerHTML = '';
+    adminEmpty.style.display = 'none';
+
+    const appointmentsRef = collection(db, 'appointments');
+    const q = query(appointmentsRef, orderBy('date', 'desc'), orderBy('time', 'desc'), limit(50));
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.empty) {
+      adminEmpty.style.display = 'block';
       return;
     }
 
-    var service = CONFIG.services.find(function (s) { return s.id === state.selectedService; });
-    var protocol = buildProtocol();
-    var submitBtn = document.querySelector("#bookingForm button[type=submit]");
-    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Confirmando..."; }
-
-    setDoc(doc(db, "appointments", protocol), {
-      date: state.selectedDate,
-      time: state.selectedTime,
-      service: service.name,
-      name: name,
-      phone: phone,
-      notes: notes,
-      status: "confirmado",
-      createdAt: new Date().toISOString()
-    }).then(function () {
-      showConfirmation(protocol, service.name);
-      resetBookingForm();
-    }).catch(function (err) {
-      console.error(err);
-      showMsg("Não foi possível confirmar o agendamento agora. Tente novamente.", "error");
-    }).finally(function () {
-      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Confirmar agendamento"; }
+    querySnapshot.forEach(docSnapshot => {
+      const data = docSnapshot.data();
+      const li = document.createElement('li');
+      li.className = 'admin-item';
+      li.innerHTML = `
+        <div>
+          <div class="who">${data.name} (${data.phone})</div>
+          <div class="when">${data.service} em ${new Date(data.date + 'T' + data.time).toLocaleString('pt-BR')}</div>
+          ${data.notes ? `<div class="notes">Obs: ${data.notes}</div>` : ''}
+        </div>
+        <button type="button" data-id="${docSnapshot.id}">Cancelar</button>
+      `;
+      adminList.appendChild(li);
     });
-  }
 
-  function showMsg(text, type) {
-    var box = document.getElementById("formMsg");
-    box.textContent = text;
-    box.className = "form-msg " + type;
-    box.style.display = "block";
-  }
-
-  function resetBookingForm() {
-    state.selectedDate = null;
-    state.selectedTime = null;
-    state.selectedService = null;
-    document.getElementById("bookingForm").reset();
-    document.querySelectorAll(".chip").forEach(function (c) { c.classList.remove("selected"); });
-    renderSlots();
-    updateSummary();
-  }
-
-  function showConfirmation(protocol, serviceName) {
-    var overlay = document.getElementById("confirmOverlay");
-    document.getElementById("confirmProtocol").textContent = protocol;
-    document.getElementById("confirmDetail").textContent =
-      "Seu horário para " + serviceName + " foi reservado com sucesso. Guarde o protocolo abaixo.";
-    overlay.hidden = false;
-  }
-
-  /* ---------------- Admin panel ---------------- */
-
-  function openAdmin() {
-    var pass = prompt("Acesso da equipe — informe a senha (demonstração: equipe123):");
-    if (pass === null) return;
-    if (pass !== CONFIG.adminPassword) {
-      alert("Senha incorreta.");
-      return;
-    }
-    renderAdminList();
-    document.getElementById("adminOverlay").hidden = false;
-  }
-
-  function renderAdminList() {
-    var list = document.getElementById("adminList");
-    var empty = document.getElementById("adminEmpty");
-    var appointments = state.appointments
-      .filter(function (a) { return a.status !== "cancelado"; })
-      .sort(function (a, b) { return (a.date + a.time).localeCompare(b.date + b.time); });
-
-    list.innerHTML = "";
-    if (appointments.length === 0) {
-      empty.style.display = "block";
-      return;
-    }
-    empty.style.display = "none";
-
-    appointments.forEach(function (a) {
-      var li = document.createElement("li");
-      li.className = "admin-item";
-      var d = a.date.split("-").map(Number);
-      var readable = new Date(d[0], d[1] - 1, d[2]).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" });
-      li.innerHTML =
-        '<div><div class="who">' + escapeHTML(a.name) + " — " + escapeHTML(a.service) + '</div>' +
-        '<div class="when">' + readable + " às " + a.time + " · " + escapeHTML(a.phone) + " · protocolo " + a.id + "</div></div>";
-      var cancelBtn = document.createElement("button");
-      cancelBtn.textContent = "Cancelar";
-      cancelBtn.addEventListener("click", function () {
-        if (confirm("Cancelar este agendamento e liberar o horário?")) {
-          cancelAppointment(a.id, cancelBtn);
+    adminList.querySelectorAll('button').forEach(button => {
+      button.addEventListener('click', async (e) => {
+        const id = e.target.dataset.id;
+        if (confirm('Tem certeza que deseja cancelar este agendamento?')) {
+          await deleteDoc(doc(db, 'appointments', id));
+          renderAdminPanel(); // Re-render after deletion
+          renderTimeSlots(); // Update public slots
         }
       });
-      li.appendChild(cancelBtn);
-      list.appendChild(li);
     });
   }
 
-  function cancelAppointment(id, triggerBtn) {
-    if (triggerBtn) triggerBtn.disabled = true;
-    updateDoc(doc(db, "appointments", id), { status: "cancelado" }).catch(function (err) {
-      console.error(err);
-      alert("Não foi possível cancelar agora. Tente novamente.");
-      if (triggerBtn) triggerBtn.disabled = false;
-    });
-    // a lista e o calendário são atualizados automaticamente pelo onSnapshot
-  }
-
-  function escapeHTML(str) {
-    var div = document.createElement("div");
-    div.textContent = str;
-    return div.innerHTML;
-  }
-
-  /* ---------------- Wiring ---------------- */
-
-  document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("prevMonth").addEventListener("click", function () {
-      state.viewMonth--;
-      if (state.viewMonth < 0) { state.viewMonth = 11; state.viewYear--; }
-      renderCalendar();
-    });
-    document.getElementById("nextMonth").addEventListener("click", function () {
-      state.viewMonth++;
-      if (state.viewMonth > 11) { state.viewMonth = 0; state.viewYear++; }
-      renderCalendar();
-    });
-
-    var servicePicker = document.getElementById("servicePicker");
-    CONFIG.services.forEach(function (s) {
-      var chip = document.createElement("div");
-      chip.className = "chip";
-      chip.dataset.service = s.id;
-      chip.innerHTML = "<span>" + s.name + "</span><span class='chip-duration'>" + s.duration + "</span>";
-      chip.addEventListener("click", function () { selectService(s.id); });
-      servicePicker.appendChild(chip);
-    });
-
-    document.getElementById("bookingForm").addEventListener("submit", handleSubmit);
-    document.getElementById("confirmClose").addEventListener("click", function () {
-      document.getElementById("confirmOverlay").hidden = true;
-    });
-
-    document.getElementById("adminLink").addEventListener("click", openAdmin);
-    document.getElementById("adminClose").addEventListener("click", function () {
-      document.getElementById("adminOverlay").hidden = true;
-    });
-
+  // --- Event Listeners ---
+  document.getElementById('prevMonth').addEventListener('click', () => {
+    currentMonth.setMonth(currentMonth.getMonth() - 1);
     renderCalendar();
-    renderSlots();
-    updateSummary();
+    renderTimeSlots();
   });
-})();
+
+  document.getElementById('nextMonth').addEventListener('click', () => {
+    currentMonth.setMonth(currentMonth.getMonth() + 1);
+    renderCalendar();
+    renderTimeSlots();
+  });
+
+  bookingForm.addEventListener('submit', submitBooking);
+
+  adminLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    adminOverlay.hidden = false;
+    renderAdminPanel();
+  });
+
+  document.getElementById('adminClose').addEventListener('click', () => {
+    adminOverlay.hidden = true;
+  });
+
+  document.getElementById('confirmClose').addEventListener('click', () => {
+    confirmOverlay.hidden = true;
+  });
+
+  // --- Initial Render ---
+  renderServices();
+  renderCalendar();
+  updateSummary();
 
 </script>
 </body>
 </html>
- 
