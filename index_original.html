@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Odonto Ateliê — Agendamento Odontológico</title>
+<meta name="description" content="Agende sua consulta odontológica online. Avaliação, limpeza, clareamento, ortodontia e implantes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   Odonto Ateliê — Agendamento Odontológico
+   Paleta: verde-petróleo profundo, hortelã suave, marfim, terracota-coral
+   ========================================================================== */
+
+:root {
+  --ink: #0f3d3e;
+  --ink-soft: #1c4a4b;
+  --mint: #cfe8e3;
+  --mint-pale: #eef7f5;
+  --ivory: #ffffff;
+  --coral: #e0795f;
+  --coral-dark: #c65f47;
+  --charcoal: #22201d;
+  --line: rgba(15, 61, 62, 0.14);
+  --shadow: 0 20px 50px -25px rgba(15, 61, 62, 0.35);
+
+  --font-display: "Fraunces", "Iowan Old Style", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: #ffffff;
+  color: var(--charcoal);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.brand-mark {
+  font-family: var(--font-display);
+  font-size: 1.42rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.brand-sub {
+  font-size: 0.64rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 6px;
+  opacity: 0.75;
+}
+
+.main-nav {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.main-nav a {
+  text-decoration: none;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 600;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.main-nav a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 15px 30px;
+  border-radius: 2px;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--ink);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  font-family: var(--font-body);
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: #ffffff;
+}
+.btn-primary:hover { background: #ffffff; color: var(--ink); }
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--ink);
+  color: var(--ink);
+}
+.btn-outline:hover { background: var(--ink); color: #ffffff; }
+
+.nav-cta { display: none; }
+@media (min-width: 720px) { .nav-cta { display: inline-flex; } }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  padding: 120px 0 56px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.hero-inner {
+  display: grid;
+  gap: 64px;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .hero-inner { grid-template-columns: 1.1fr 0.9fr; }
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--coral-dark);
+  margin-bottom: 26px;
+  font-weight: 600;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: var(--coral-dark);
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5.4vw, 4.1rem);
+  line-height: 1.04;
+  color: var(--ink);
+  margin: 0 0 26px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--coral-dark);
+}
+
+.hero p.lede {
+  font-size: 1.08rem;
+  color: var(--ink-soft);
+  max-width: 46ch;
+  margin: 0 0 40px;
+  font-weight: 400;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-figure {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #ffffff;
+  padding: 44px;
+  min-height: 340px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero-card {
+  background: #ffffff;
+  border-radius: 2px;
+  padding: 0;
+  width: 100%;
+}
+
+.hero-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+.hero-card-row:first-child { padding-top: 0; }
+.hero-card-row:last-child { border-bottom: none; padding-bottom: 0; }
+.hero-card-row .label { color: var(--ink-soft); }
+.hero-card-row .value { font-weight: 600; color: var(--ink); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; }
+
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.status-dot.free { background: #4a9b7f; }
+.status-dot.busy { background: var(--coral-dark); }
+
+/* Signature divider */
+.smile-divider {
+  width: 100%;
+  height: 64px;
+  margin: 10px 0 0;
+}
+.smile-divider svg { width: 100%; height: 100%; display: block; }
+
+/* ---------- Sections ---------- */
+section { padding: 116px 0; background: #ffffff; }
+
+.section-head {
+  max-width: 60ch;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+
+.section-head .eyebrow { justify-content: center; }
+.section-head .eyebrow::before { display: none; }
+
+.section-head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+  color: var(--ink);
+  margin: 0 0 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.section-head p {
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+}
+
+/* Services */
+.services-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.service-card {
+  background: #ffffff;
+  padding: 40px 32px;
+  transition: background 0.2s ease;
+  position: relative;
+}
+
+.service-card:hover { background: #fafafa; }
+
+.service-index {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--coral-dark);
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.service-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  margin: 14px 0 10px;
+  color: var(--ink);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.service-card p {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+.service-meta {
+  margin-top: 20px;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  opacity: 0.8;
+}
+
+/* Booking section */
+.booking-section { background: #ffffff; }
+
+.booking-section .section-head h2 { color: var(--ink); }
+.booking-section .section-head p { color: var(--ink-soft); }
+.booking-section .eyebrow { color: var(--coral-dark); }
+.booking-section .eyebrow::before { background: var(--coral-dark); }
+
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0.45;
+  font-weight: 600;
+}
+.step.active { color: var(--ink); opacity: 1; }
+.step-num {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem;
+  font-family: var(--font-display);
+  color: var(--ink-soft);
+}
+.step.active .step-num { background: var(--ink); border-color: var(--ink); color: #ffffff; }
+
+.booking-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+@media (min-width: 880px) {
+  .booking-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.panel {
+  background: #ffffff;
+  padding: 44px;
+}
+
+.panel h3 {
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  margin: 0 0 6px;
+  color: var(--ink);
+  font-weight: 500;
+}
+.panel .panel-sub { font-size: 0.85rem; color: var(--ink-soft); margin: 0 0 28px; }
+
+/* Service picker chips */
+.service-picker {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.chip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 14px 16px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  background: #ffffff;
+  transition: border-color 0.15s ease;
+}
+.chip.selected { border: 1px solid var(--ink); }
+.chip.selected span:first-child { font-weight: 600; color: var(--ink); }
+.chip .chip-duration { font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-soft); }
+
+/* Calendar */
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.calendar-nav button {
+  background: none; border: 1px solid var(--line); border-radius: 50%;
+  width: 30px; height: 30px; cursor: pointer; font-size: 0.95rem; color: var(--ink);
+  transition: border-color 0.15s ease;
+}
+.calendar-nav button:hover { border-color: var(--ink); }
+.calendar-month { font-family: var(--font-display); font-weight: 500; color: var(--ink); text-transform: capitalize; letter-spacing: -0.01em; }
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+}
+
+.calendar-grid .dow {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  padding-bottom: 10px;
+  opacity: 0.7;
+}
+
+.day-cell {
+  aspect-ratio: 1;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  font-size: 0.86rem;
+  color: var(--charcoal);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  transition: border-color 0.15s ease;
+}
+.day-cell:hover:not(:disabled) { border-color: var(--line); }
+.day-cell:disabled { color: #d4d4d4; cursor: not-allowed; }
+.day-cell.today { font-weight: 700; }
+.day-cell.selected { border-color: var(--ink); color: var(--ink); font-weight: 600; }
+.day-cell.has-slots::after {
+  content: "";
+  position: absolute; bottom: 5px; width: 3px; height: 3px; border-radius: 50%;
+  background: var(--coral-dark);
+}
+.day-cell.empty { visibility: hidden; }
+
+/* Time slots */
+.slots-title { font-size: 0.84rem; color: var(--ink-soft); margin: 28px 0 12px; }
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 8px;
+}
+.slot-btn {
+  padding: 11px 6px;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  font-size: 0.84rem;
+  cursor: pointer;
+  color: var(--ink);
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+.slot-btn:hover:not(:disabled) { border-color: var(--ink); }
+.slot-btn.selected { background: var(--ink); border-color: var(--ink); color: #ffffff; font-weight: 600; }
+.slot-btn:disabled {
+  background: #ffffff;
+  color: #d4d4d4;
+  cursor: not-allowed;
+  border-color: var(--line);
+  text-decoration: line-through;
+}
+.empty-note { font-size: 0.86rem; color: var(--ink-soft); padding: 10px 2px; }
+
+/* Form */
+.field { margin-bottom: 18px; }
+.field label {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.field input, .field textarea, .field select {
+  width: 100%;
+  padding: 13px 14px;
+  border-radius: 2px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.94rem;
+  color: var(--charcoal);
+  transition: border-color 0.15s ease;
+}
+.field input:focus, .field textarea:focus, .field select:focus {
+  outline: none; border-color: var(--ink);
+}
+.field textarea { resize: vertical; min-height: 76px; }
+
+.summary-box {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 16px 18px;
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+}
+.summary-box strong { color: var(--ink); }
+
+.form-msg {
+  font-size: 0.85rem;
+  padding: 12px 14px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  border: 1px solid var(--line);
+}
+.form-msg.error { border-color: var(--coral-dark); color: var(--coral-dark); }
+.form-msg.success { border-color: var(--ink); color: var(--ink); }
+
+/* Confirmation */
+.confirm-panel { text-align: center; padding: 52px 30px; }
+.confirm-icon {
+  width: 52px; height: 52px; margin: 0 auto 22px;
+  border-radius: 50%; border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+}
+.confirm-panel h3 { font-family: var(--font-display); font-size: 1.4rem; color: var(--ink); margin: 0 0 12px; font-weight: 500; }
+.confirm-panel p { color: var(--ink-soft); margin: 0 0 26px; }
+.protocol {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  padding: 12px 24px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  margin-bottom: 26px;
+  color: var(--ink);
+}
+
+/* Team / About */
+.about-grid {
+  display: grid;
+  gap: 56px;
+  align-items: center;
+}
+@media (min-width: 900px) { .about-grid { grid-template-columns: 0.85fr 1.15fr; } }
+
+.about-figure {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  min-height: 300px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 18px;
+  background: #ffffff;
+}
+.stat-row { display: flex; gap: 36px; }
+.stat { }
+.stat .num { font-family: var(--font-display); font-size: 2.1rem; color: var(--ink); font-weight: 500; }
+.stat .cap { font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); margin-top: 4px; }
+
+.about-copy h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  color: var(--ink);
+  margin: 0 0 20px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.about-copy p { color: var(--ink-soft); margin-bottom: 18px; }
+.about-list { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 14px; }
+.about-list li {
+  display: flex; gap: 14px; font-size: 0.94rem; color: var(--ink-soft);
+  padding-left: 0;
+}
+.about-list li::before {
+  content: "";
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--coral-dark);
+  margin-top: 9px;
+  flex-shrink: 0;
+}
+
+/* Contact / Footer */
+.contact-section {
+  background: #ffffff;
+  border-top: 1px solid var(--line);
+}
+.contact-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.contact-card {
+  background: #ffffff;
+  padding: 32px;
+}
+.contact-card h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  margin: 0 0 10px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.contact-card p { margin: 0; color: var(--ink-soft); font-size: 0.9rem; }
+
+footer.site-footer {
+  background: #ffffff;
+  color: var(--ink-soft);
+  padding: 44px 0 30px;
+  font-size: 0.86rem;
+  border-top: 1px solid var(--line);
+}
+.footer-inner {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+}
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { text-decoration: none; color: var(--ink-soft); font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.footer-links a:hover { color: var(--ink); }
+.footer-admin-link {
+  background: none; border: none; color: var(--ink-soft);
+  font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase;
+  cursor: pointer; text-decoration: underline;
+  padding: 0;
+  opacity: 0.7;
+}
+
+/* Admin panel (modal) */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(20,20,20,0.5);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; z-index: 100;
+}
+.modal-overlay[hidden] { display: none; }
+.modal-box {
+  background: #ffffff; border-radius: 4px; border: 1px solid var(--line);
+  width: 100%; max-width: 480px;
+  padding: 36px;
+  max-height: 86vh; overflow-y: auto;
+}
+.modal-box.wide { max-width: 720px; }
+.modal-box h3 { font-family: var(--font-display); color: var(--ink); margin-top: 0; font-weight: 500; }
+.modal-close {
+  float: right; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--ink-soft);
+}
+
+.admin-list { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 10px; }
+.admin-item {
+  border: 1px solid var(--line); border-radius: 2px;
+  padding: 14px 16px; display: flex; justify-content: space-between; gap: 10px; align-items: center;
+  font-size: 0.88rem;
+}
+.admin-item .who { font-weight: 600; color: var(--ink); }
+.admin-item .when { color: var(--ink-soft); font-size: 0.8rem; margin-top: 3px; }
+.admin-item button {
+  background: none; border: 1px solid var(--coral-dark); color: var(--coral-dark);
+  border-radius: 2px; padding: 7px 14px; font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer;
+}
+.admin-empty { color: var(--ink-soft); font-size: 0.88rem; margin-top: 18px; }
+
+@media (max-width: 640px) {
+  .header-inner { padding: 18px 20px; }
+  .main-nav { display: none; }
+  section { padding: 72px 0; }
+  .hero { padding: 64px 0 32px; }
+  .panel { padding: 28px; }
+}
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">Odonto Ateliê</span>
+      <span class="brand-sub">Clínica Odontológica</span>
+    </a>
+    <nav class="main-nav">
+      <a href="#servicos">Serviços</a>
+      <a href="#agendar">Agendar</a>
+      <a href="#sobre">A clínica</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a href="#agendar" class="btn btn-primary nav-cta">Agendar horário</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <span class="eyebrow">Sorrisos cuidados com precisão</span>
+        <h1>Sua consulta odontológica, <em>agendada em minutos</em>.</h1>
+        <p class="lede">Escolha o serviço, veja os horários realmente disponíveis e confirme seu atendimento sem ligações nem espera. Simples para você, organizado para nossa equipe.</p>
+        <div class="hero-actions">
+          <a href="#agendar" class="btn btn-primary">Agendar horário</a>
+          <a href="#servicos" class="btn btn-outline">Ver serviços</a>
+        </div>
+      </div>
+      <div class="hero-figure">
+        <div class="hero-card">
+          <div class="hero-card-row"><span class="label"><span class="status-dot free"></span>Qui, 14h00</span><span class="value">Disponível</span></div>
+          <div class="hero-card-row"><span class="label"><span class="status-dot busy"></span>Qui, 15h20</span><span class="value">Ocupado</span></div>
+          <div class="hero-card-row"><span class="label"><span class="status-dot free"></span>Sex, 09h20</span><span class="value">Disponível</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="smile-divider" aria-hidden="true">
+      <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+        <path d="M0,10 Q600,70 1200,10" fill="none" stroke="#0f3d3e" stroke-width="1.4" opacity="0.35"/>
+      </svg>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">O que tratamos</span>
+        <h2>Serviços disponíveis para agendamento</h2>
+        <p>Cada especialidade tem duração própria — o sistema reserva automaticamente o tempo certo na agenda.</p>
+      </div>
+      <div class="services-grid">
+        <article class="service-card">
+          <span class="service-index">01</span>
+          <h3>Avaliação e diagnóstico</h3>
+          <p>Exame clínico completo, radiografias quando necessário e plano de tratamento personalizado.</p>
+          <div class="service-meta">Duração média: 40 min</div>
+        </article>
+        <article class="service-card">
+          <span class="service-index">02</span>
+          <h3>Limpeza e prevenção</h3>
+          <p>Profilaxia, remoção de tártaro e orientação de higiene para manter a saúde bucal em dia.</p>
+          <div class="service-meta">Duração média: 40 min</div>
+        </article>
+        <article class="service-card">
+          <span class="service-index">03</span>
+          <h3>Clareamento dental</h3>
+          <p>Protocolo clareador supervisionado, com avaliação de sensibilidade antes e depois.</p>
+          <div class="service-meta">Duração média: 1h</div>
+        </article>
+        <article class="service-card">
+          <span class="service-index">04</span>
+          <h3>Manutenção ortodôntica</h3>
+          <p>Ajuste de aparelho, troca de alinhadores e acompanhamento do plano de tratamento.</p>
+          <div class="service-meta">Duração média: 40 min</div>
+        </article>
+        <article class="service-card">
+          <span class="service-index">05</span>
+          <h3>Avaliação para implante</h3>
+          <p>Análise de imagem, planejamento cirúrgico e explicação detalhada das etapas.</p>
+          <div class="service-meta">Duração média: 1h</div>
+        </article>
+        <article class="service-card">
+          <span class="service-index">06</span>
+          <h3>Urgência odontológica</h3>
+          <p>Atendimento prioritário para dor aguda, fraturas e traumas dentários.</p>
+          <div class="service-meta">Duração média: 40 min</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking-section" id="agendar">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Agendamento online</span>
+        <h2>Escolha o serviço, a data e o horário</h2>
+        <p>Os horários já ocupados aparecem bloqueados automaticamente — você só vê o que está realmente disponível.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step active"><span class="step-num">1</span> Serviço</div>
+        <div class="step active"><span class="step-num">2</span> Data e horário</div>
+        <div class="step active"><span class="step-num">3</span> Seus dados</div>
+      </div>
+
+      <div class="booking-grid">
+        <div class="panel">
+          <h3>Serviço e calendário</h3>
+          <p class="panel-sub">Toque em um serviço e depois em uma data com disponibilidade.</p>
+
+          <div class="service-picker" id="servicePicker"></div>
+
+          <div class="calendar-nav">
+            <button type="button" id="prevMonth" aria-label="Mês anterior">‹</button>
+            <span class="calendar-month" id="calendarMonthLabel"></span>
+            <button type="button" id="nextMonth" aria-label="Próximo mês">›</button>
+          </div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+
+          <p class="slots-title" id="slotsTitle">Escolha uma data no calendário para ver os horários.</p>
+          <div class="slots-grid" id="slotsWrap"></div>
+        </div>
+
+        <div class="panel">
+          <h3>Confirmar agendamento</h3>
+          <p class="panel-sub">Preencha seus dados para concluir a reserva do horário.</p>
+
+          <div class="summary-box" id="summaryBox">Selecione o serviço, a data e o horário para continuar.</div>
+
+          <form id="bookingForm" novalidate>
+            <div id="formMsg" class="form-msg" style="display:none;"></div>
+            <div class="field">
+              <label for="fldName">Nome completo</label>
+              <input type="text" id="fldName" name="name" placeholder="Seu nome" required>
+            </div>
+            <div class="field">
+              <label for="fldPhone">Telefone / WhatsApp</label>
+              <input type="tel" id="fldPhone" name="phone" placeholder="(00) 00000-0000" required>
+            </div>
+            <div class="field">
+              <label for="fldNotes">Observações (opcional)</label>
+              <textarea id="fldNotes" name="notes" placeholder="Alergias, dor específica, convênio, etc."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Confirmar agendamento</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="container about-grid">
+      <div class="about-figure">
+        <div class="stat-row">
+          <div class="stat"><div class="num">18</div><div class="cap">anos de clínica</div></div>
+          <div class="stat"><div class="num">6</div><div class="cap">especialidades</div></div>
+          <div class="stat"><div class="num">4.9</div><div class="cap">avaliação média</div></div>
+        </div>
+      </div>
+      <div class="about-copy">
+        <span class="eyebrow">A clínica</span>
+        <h2>Odontologia atenciosa, do primeiro contato ao pós-tratamento</h2>
+        <p>O Odonto Ateliê nasceu para transformar a experiência de ir ao dentista: agenda transparente, tempo de consulta respeitado e uma equipe que explica cada etapa do tratamento.</p>
+        <ul class="about-list">
+          <li>Consultórios equipados com tecnologia digital de imagem</li>
+          <li>Biossegurança seguindo os protocolos do Conselho Federal de Odontologia</li>
+          <li>Atendimento em português e inglês, com opção de telelembrete por WhatsApp</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contato">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Fale com a clínica</span>
+        <h2>Endereço, horário e contato</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h4>Endereço</h4>
+          <p>Rua das Orquídeas, 245 — Conjunto 12<br>Bairro Jardim das Flores</p>
+        </div>
+        <div class="contact-card">
+          <h4>Horário de atendimento</h4>
+          <p>Segunda a sexta, 08h às 18h<br>Sábado, 08h às 12h</p>
+        </div>
+        <div class="contact-card">
+          <h4>Contato direto</h4>
+          <p>(11) 4002-8922<br>contato@odontoatelie.com.br</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span>© 2026 Odonto Ateliê — Clínica Odontológica</span>
+    <div class="footer-links">
+      <a href="#servicos">Serviços</a>
+      <a href="#agendar">Agendar</a>
+      <a href="#contato">Contato</a>
+      <button type="button" class="footer-admin-link" id="adminLink">Acesso da equipe</button>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="confirmOverlay" hidden>
+  <div class="modal-box">
+    <button type="button" class="modal-close" id="confirmClose" aria-label="Fechar">×</button>
+    <div class="confirm-panel">
+      <div class="confirm-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f3d3e" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg>
+      </div>
+      <h3>Agendamento confirmado</h3>
+      <p id="confirmDetail"></p>
+      <span class="protocol" id="confirmProtocol"></span>
+      <div><button type="button" class="btn btn-outline" id="confirmClose2" onclick="document.getElementById('confirmOverlay').hidden=true">Fechar</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="adminOverlay" hidden>
+  <div class="modal-box wide">
+    <button type="button" class="modal-close" id="adminClose" aria-label="Fechar">×</button>
+    <h3>Agendamentos confirmados</h3>
+    <p class="panel-sub" style="margin-top:-8px;">Área de uso interno da equipe. Cancelar um horário libera o slot imediatamente para novos agendamentos.</p>
+    <ul class="admin-list" id="adminList"></ul>
+    <p class="admin-empty" id="adminEmpty" style="display:none;">Nenhum agendamento no momento.</p>
+  </div>
+</div>
+
+<script type="module">
+/* ==========================================================================
+   Odonto Ateliê — lógica de agendamento
+   Os agendamentos agora são salvos no Firebase Firestore (nuvem), então
+   funcionam de qualquer navegador/dispositivo, não só no aparelho de quem
+   preencheu o formulário.
+   ========================================================================== */
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  doc,
+  setDoc,
+  updateDoc,
+  onSnapshot
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
+
+/* ---------------- Configuração do Firebase ---------------- */
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCJzKFPONPZlb6pmvAZCmWkdMaALIuExtM",
+  authDomain: "dentistas-8048b.firebaseapp.com",
+  projectId: "dentistas-8048b",
+  storageBucket: "dentistas-8048b.firebasestorage.app",
+  messagingSenderId: "916688144510",
+  appId: "1:916688144510:web:bdcb16227330c8bf7b702f",
+  measurementId: "G-DW7G1YFBFN"
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp);
+const appointmentsCol = collection(db, "appointments");
+
+(function () {
+  "use strict";
+
+  var CONFIG = {
+    adminPassword: "equipe123",
+    slotMinutes: 40,
+    // 0=domingo ... 6=sábado
+    hours: {
+      1: { start: "08:00", end: "18:00" },
+      2: { start: "08:00", end: "18:00" },
+      3: { start: "08:00", end: "18:00" },
+      4: { start: "08:00", end: "18:00" },
+      5: { start: "08:00", end: "18:00" },
+      6: { start: "08:00", end: "12:00" }
+    },
+    services: [
+      { id: "avaliacao", name: "Avaliação e diagnóstico", duration: "40 min" },
+      { id: "limpeza", name: "Limpeza e prevenção", duration: "40 min" },
+      { id: "clareamento", name: "Clareamento dental", duration: "1h" },
+      { id: "ortodontia", name: "Manutenção ortodôntica", duration: "40 min" },
+      { id: "implante", name: "Avaliação para implante", duration: "1h" },
+      { id: "urgencia", name: "Urgência odontológica", duration: "40 min" }
+    ]
+  };
+
+  var state = {
+    viewYear: new Date().getFullYear(),
+    viewMonth: new Date().getMonth(),
+    selectedDate: null,
+    selectedService: null,
+    selectedTime: null,
+    appointments: [],      // cache local, mantido em tempo real pelo Firestore
+    firestoreReady: false,
+    firestoreError: false
+  };
+
+  var MONTHS = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+  var DOWS = ["dom","seg","ter","qua","qui","sex","sáb"];
+
+  function pad(n) { return n < 10 ? "0" + n : "" + n; }
+
+  function toISO(y, m, d) { return y + "-" + pad(m + 1) + "-" + pad(d); }
+
+  function todayISO() {
+    var t = new Date();
+    return toISO(t.getFullYear(), t.getMonth(), t.getDate());
+  }
+
+  /* ---------------- Firestore: sincronização em tempo real ---------------- */
+
+  onSnapshot(appointmentsCol, function (snapshot) {
+    var list = [];
+    snapshot.forEach(function (docSnap) {
+      var data = docSnap.data();
+      data.id = docSnap.id;
+      list.push(data);
+    });
+    state.appointments = list;
+    state.firestoreReady = true;
+    renderCalendar();
+    renderSlots();
+    if (document.getElementById("adminOverlay") && !document.getElementById("adminOverlay").hidden) {
+      renderAdminList();
+    }
+  }, function (err) {
+    console.error("Erro ao conectar com o Firestore:", err);
+    state.firestoreError = true;
+    var msg = document.getElementById("formMsg");
+    if (msg) {
+      msg.textContent = "Não foi possível conectar à agenda online agora. Tente novamente em instantes.";
+      msg.className = "form-msg error";
+      msg.style.display = "block";
+    }
+  });
+
+  function appointmentsForDate(dateISO) {
+    return state.appointments.filter(function (a) { return a.date === dateISO && a.status !== "cancelado"; });
+  }
+
+  function generateSlotsForDate(dateISO) {
+    var parts = dateISO.split("-").map(Number);
+    var d = new Date(parts[0], parts[1] - 1, parts[2]);
+    var dow = d.getDay();
+    var range = CONFIG.hours[dow];
+    if (!range) return [];
+
+    var slots = [];
+    var startParts = range.start.split(":").map(Number);
+    var endParts = range.end.split(":").map(Number);
+    var startMin = startParts[0] * 60 + startParts[1];
+    var endMin = endParts[0] * 60 + endParts[1];
+
+    for (var m = startMin; m + CONFIG.slotMinutes <= endMin; m += CONFIG.slotMinutes) {
+      slots.push(pad(Math.floor(m / 60)) + ":" + pad(m % 60));
+    }
+    return slots;
+  }
+
+  function isPastDate(dateISO) {
+    return dateISO < todayISO();
+  }
+
+  /* ---------------- Calendar rendering ---------------- */
+
+  function renderCalendar() {
+    var grid = document.getElementById("calendarGrid");
+    var label = document.getElementById("calendarMonthLabel");
+    label.textContent = MONTHS[state.viewMonth] + " de " + state.viewYear;
+
+    grid.innerHTML = "";
+    DOWS.forEach(function (d) {
+      var el = document.createElement("div");
+      el.className = "dow";
+      el.textContent = d;
+      grid.appendChild(el);
+    });
+
+    var firstDay = new Date(state.viewYear, state.viewMonth, 1).getDay();
+    var daysInMonth = new Date(state.viewYear, state.viewMonth + 1, 0).getDate();
+
+    for (var i = 0; i < firstDay; i++) {
+      var empty = document.createElement("div");
+      empty.className = "day-cell empty";
+      grid.appendChild(empty);
+    }
+
+    for (var day = 1; day <= daysInMonth; day++) {
+      var dateISO = toISO(state.viewYear, state.viewMonth, day);
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "day-cell";
+      btn.textContent = day;
+
+      var dow = new Date(state.viewYear, state.viewMonth, day).getDay();
+      var hasHours = !!CONFIG.hours[dow];
+      var past = isPastDate(dateISO);
+
+      if (dateISO === todayISO()) btn.classList.add("today");
+
+      if (!hasHours || past) {
+        btn.disabled = true;
+      } else {
+        var slots = generateSlotsForDate(dateISO);
+        var taken = appointmentsForDate(dateISO).map(function (a) { return a.time; });
+        var openSlots = slots.filter(function (s) { return taken.indexOf(s) === -1; });
+        if (openSlots.length > 0) btn.classList.add("has-slots");
+        else btn.disabled = true;
+
+        btn.addEventListener("click", function (dISO) {
+          return function () { selectDate(dISO); };
+        }(dateISO));
+      }
+
+      if (dateISO === state.selectedDate) btn.classList.add("selected");
+
+      grid.appendChild(btn);
+    }
+  }
+
+  function selectDate(dateISO) {
+    state.selectedDate = dateISO;
+    state.selectedTime = null;
+    renderCalendar();
+    renderSlots();
+    updateSummary();
+  }
+
+  function renderSlots() {
+    var wrap = document.getElementById("slotsWrap");
+    var title = document.getElementById("slotsTitle");
+
+    if (!state.selectedDate) {
+      title.textContent = "Escolha uma data no calendário para ver os horários.";
+      wrap.innerHTML = "";
+      return;
+    }
+
+    var d = state.selectedDate.split("-").map(Number);
+    var readable = new Date(d[0], d[1] - 1, d[2]).toLocaleDateString("pt-BR", { weekday: "long", day: "2-digit", month: "long" });
+    title.textContent = "Horários em " + readable;
+
+    var slots = generateSlotsForDate(state.selectedDate);
+    var taken = appointmentsForDate(state.selectedDate).map(function (a) { return a.time; });
+
+    wrap.innerHTML = "";
+    if (slots.length === 0) {
+      var p = document.createElement("p");
+      p.className = "empty-note";
+      p.textContent = "Não atendemos nesta data.";
+      wrap.appendChild(p);
+      return;
+    }
+
+    var gridEl = document.createElement("div");
+    gridEl.className = "slots-grid";
+    slots.forEach(function (time) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "slot-btn";
+      b.textContent = time;
+      var occupied = taken.indexOf(time) !== -1;
+      if (occupied) {
+        b.disabled = true;
+        b.title = "Horário já ocupado";
+      } else {
+        b.addEventListener("click", function () { selectTime(time); });
+      }
+      if (time === state.selectedTime) b.classList.add("selected");
+      gridEl.appendChild(b);
+    });
+    wrap.appendChild(gridEl);
+  }
+
+  function selectTime(time) {
+    state.selectedTime = time;
+    renderSlots();
+    updateSummary();
+  }
+
+  function selectService(serviceId) {
+    state.selectedService = serviceId;
+    document.querySelectorAll(".chip").forEach(function (chip) {
+      chip.classList.toggle("selected", chip.dataset.service === serviceId);
+    });
+    updateSummary();
+  }
+
+  function updateSummary() {
+    var box = document.getElementById("summaryBox");
+    var service = CONFIG.services.find(function (s) { return s.id === state.selectedService; });
+
+    if (!state.selectedDate || !state.selectedTime || !service) {
+      box.innerHTML = "Selecione o serviço, a data e o horário para continuar.";
+      return;
+    }
+    var d = state.selectedDate.split("-").map(Number);
+    var readable = new Date(d[0], d[1] - 1, d[2]).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
+    box.innerHTML = "Você está agendando <strong>" + service.name + "</strong> para <strong>" + readable + "</strong> às <strong>" + state.selectedTime + "</strong>.";
+  }
+
+  function buildProtocol() {
+    return "OD-" + Date.now().toString().slice(-6);
+  }
+
+  function handleSubmit(ev) {
+    ev.preventDefault();
+    var msgBox = document.getElementById("formMsg");
+    msgBox.style.display = "none";
+
+    if (!state.firestoreReady) return showMsg("Ainda conectando à agenda online, tente novamente em instantes.", "error");
+
+    var name = document.getElementById("fldName").value.trim();
+    var phone = document.getElementById("fldPhone").value.trim();
+    var notes = document.getElementById("fldNotes").value.trim();
+
+    if (!state.selectedService) return showMsg("Escolha um serviço antes de continuar.", "error");
+    if (!state.selectedDate || !state.selectedTime) return showMsg("Escolha uma data e um horário disponível.", "error");
+    if (!name || !phone) return showMsg("Preencha nome e telefone para confirmar.", "error");
+
+    // Revalida se o horário não foi ocupado por outra pessoa enquanto o formulário estava aberto
+    var taken = appointmentsForDate(state.selectedDate).map(function (a) { return a.time; });
+    if (taken.indexOf(state.selectedTime) !== -1) {
+      showMsg("Esse horário acabou de ser ocupado. Escolha outro.", "error");
+      renderSlots();
+      renderCalendar();
+      return;
+    }
+
+    var service = CONFIG.services.find(function (s) { return s.id === state.selectedService; });
+    var protocol = buildProtocol();
+    var submitBtn = document.querySelector("#bookingForm button[type=submit]");
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Confirmando..."; }
+
+    setDoc(doc(db, "appointments", protocol), {
+      date: state.selectedDate,
+      time: state.selectedTime,
+      service: service.name,
+      name: name,
+      phone: phone,
+      notes: notes,
+      status: "confirmado",
+      createdAt: new Date().toISOString()
+    }).then(function () {
+      showConfirmation(protocol, service.name);
+      resetBookingForm();
+    }).catch(function (err) {
+      console.error(err);
+      showMsg("Não foi possível confirmar o agendamento agora. Tente novamente.", "error");
+    }).finally(function () {
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Confirmar agendamento"; }
+    });
+  }
+
+  function showMsg(text, type) {
+    var box = document.getElementById("formMsg");
+    box.textContent = text;
+    box.className = "form-msg " + type;
+    box.style.display = "block";
+  }
+
+  function resetBookingForm() {
+    state.selectedDate = null;
+    state.selectedTime = null;
+    state.selectedService = null;
+    document.getElementById("bookingForm").reset();
+    document.querySelectorAll(".chip").forEach(function (c) { c.classList.remove("selected"); });
+    renderSlots();
+    updateSummary();
+  }
+
+  function showConfirmation(protocol, serviceName) {
+    var overlay = document.getElementById("confirmOverlay");
+    document.getElementById("confirmProtocol").textContent = protocol;
+    document.getElementById("confirmDetail").textContent =
+      "Seu horário para " + serviceName + " foi reservado com sucesso. Guarde o protocolo abaixo.";
+    overlay.hidden = false;
+  }
+
+  /* ---------------- Admin panel ---------------- */
+
+  function openAdmin() {
+    var pass = prompt("Acesso da equipe — informe a senha (demonstração: equipe123):");
+    if (pass === null) return;
+    if (pass !== CONFIG.adminPassword) {
+      alert("Senha incorreta.");
+      return;
+    }
+    renderAdminList();
+    document.getElementById("adminOverlay").hidden = false;
+  }
+
+  function renderAdminList() {
+    var list = document.getElementById("adminList");
+    var empty = document.getElementById("adminEmpty");
+    var appointments = state.appointments
+      .filter(function (a) { return a.status !== "cancelado"; })
+      .sort(function (a, b) { return (a.date + a.time).localeCompare(b.date + b.time); });
+
+    list.innerHTML = "";
+    if (appointments.length === 0) {
+      empty.style.display = "block";
+      return;
+    }
+    empty.style.display = "none";
+
+    appointments.forEach(function (a) {
+      var li = document.createElement("li");
+      li.className = "admin-item";
+      var d = a.date.split("-").map(Number);
+      var readable = new Date(d[0], d[1] - 1, d[2]).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" });
+      li.innerHTML =
+        '<div><div class="who">' + escapeHTML(a.name) + " — " + escapeHTML(a.service) + '</div>' +
+        '<div class="when">' + readable + " às " + a.time + " · " + escapeHTML(a.phone) + " · protocolo " + a.id + "</div></div>";
+      var cancelBtn = document.createElement("button");
+      cancelBtn.textContent = "Cancelar";
+      cancelBtn.addEventListener("click", function () {
+        if (confirm("Cancelar este agendamento e liberar o horário?")) {
+          cancelAppointment(a.id, cancelBtn);
+        }
+      });
+      li.appendChild(cancelBtn);
+      list.appendChild(li);
+    });
+  }
+
+  function cancelAppointment(id, triggerBtn) {
+    if (triggerBtn) triggerBtn.disabled = true;
+    updateDoc(doc(db, "appointments", id), { status: "cancelado" }).catch(function (err) {
+      console.error(err);
+      alert("Não foi possível cancelar agora. Tente novamente.");
+      if (triggerBtn) triggerBtn.disabled = false;
+    });
+    // a lista e o calendário são atualizados automaticamente pelo onSnapshot
+  }
+
+  function escapeHTML(str) {
+    var div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  /* ---------------- Wiring ---------------- */
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("prevMonth").addEventListener("click", function () {
+      state.viewMonth--;
+      if (state.viewMonth < 0) { state.viewMonth = 11; state.viewYear--; }
+      renderCalendar();
+    });
+    document.getElementById("nextMonth").addEventListener("click", function () {
+      state.viewMonth++;
+      if (state.viewMonth > 11) { state.viewMonth = 0; state.viewYear++; }
+      renderCalendar();
+    });
+
+    var servicePicker = document.getElementById("servicePicker");
+    CONFIG.services.forEach(function (s) {
+      var chip = document.createElement("div");
+      chip.className = "chip";
+      chip.dataset.service = s.id;
+      chip.innerHTML = "<span>" + s.name + "</span><span class='chip-duration'>" + s.duration + "</span>";
+      chip.addEventListener("click", function () { selectService(s.id); });
+      servicePicker.appendChild(chip);
+    });
+
+    document.getElementById("bookingForm").addEventListener("submit", handleSubmit);
+    document.getElementById("confirmClose").addEventListener("click", function () {
+      document.getElementById("confirmOverlay").hidden = true;
+    });
+
+    document.getElementById("adminLink").addEventListener("click", openAdmin);
+    document.getElementById("adminClose").addEventListener("click", function () {
+      document.getElementById("adminOverlay").hidden = true;
+    });
+
+    renderCalendar();
+    renderSlots();
+    updateSummary();
+  });
+})();
+
+</script>
+</body>
+</html>

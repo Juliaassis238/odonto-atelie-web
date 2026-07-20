@@ -10,27 +10,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ==========================================================================
-   Odonto Ateliê — Estilos Visuais
+   Odonto Ateliê — Estilos Visuais Premium
    ========================================================================== */
 
 :root {
-  --ink: #111B29;
-  --ink-soft: #2C3E50;
-  --mint: #E8DCC4;
-  --mint-pale: #F9F6F0;
-  --ivory: #FFFFFF;
-  --coral: #C89F70;
-  --coral-dark: #A67B5B;
-  --charcoal: #1A1A1A;
+  --ink: #111B29; /* Azul Meia-Noite Profundo */
+  --ink-soft: #2C3E50; /* Azul Naval */
+  --mint: #E8DCC4; /* Champagne/Areia (Bege) */
+  --mint-pale: #F9F6F0; /* Bege muito pálido */
+  --ivory: #FFFFFF; /* Branco puro */
+  --coral: #C89F70; /* Dourado Suave / Champagne Escuro */
+  --coral-dark: #A67B5B; /* Bronze/Dourado Envelhecido */
+  --charcoal: #1A1A1A; /* Quase preto */
   --line: rgba(17, 27, 41, 0.14);
   --shadow: 0 20px 50px -25px rgba(17, 27, 41, 0.35);
+
   --font-display: "Fraunces", "Iowan Old Style", serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
   --radius: 18px;
+  --radius-sm: 10px;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -40,30 +44,104 @@ body {
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
 }
+
 img { max-width: 100%; display: block; }
 a { color: inherit; }
-.container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
 
 /* ---------- Header ---------- */
-.site-header { position: sticky; top: 0; z-index: 40; background: #ffffff; border-bottom: 1px solid var(--line); }
-.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 24px 32px; max-width: 1180px; margin: 0 auto; }
-.brand { display: flex; flex-direction: column; line-height: 1; text-decoration: none; }
-.brand-mark { font-family: var(--font-display); font-size: 1.42rem; font-weight: 600; color: var(--ink); }
-.brand-sub { font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-soft); margin-top: 6px; opacity: 0.75; }
-.main-nav { display: flex; gap: 40px; align-items: center; }
-.main-nav a { text-decoration: none; font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); font-weight: 600; }
-.main-nav a:hover { color: var(--ink); }
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.brand-mark {
+  font-family: var(--font-display);
+  font-size: 1.42rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.brand-sub {
+  font-size: 0.64rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 6px;
+  opacity: 0.75;
+}
+
+.main-nav {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.main-nav a {
+  text-decoration: none;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 600;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: 0.2s ease;
+}
+
+.main-nav a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 
 .btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  padding: 15px 30px; border-radius: 2px; font-size: 0.78rem; letter-spacing: 0.08em;
-  text-transform: uppercase; font-weight: 600; text-decoration: none; border: 1px solid var(--ink);
-  cursor: pointer; transition: 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 15px 30px;
+  border-radius: 2px;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--ink);
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-family: var(--font-body);
 }
+
 .btn-primary { background: var(--ink); color: #ffffff; }
 .btn-primary:hover { background: #ffffff; color: var(--ink); }
-.btn-outline { background: transparent; border-color: var(--ink); color: var(--ink); }
 
+.btn-outline { background: transparent; border-color: var(--ink); color: var(--ink); }
+.btn-outline:hover { background: var(--ink); color: #ffffff; }
+
+/* Botões na Seção Azul */
 .hero .btn-primary { background: var(--mint); color: var(--ink); border-color: var(--mint); }
 .hero .btn-primary:hover { background: transparent; color: var(--ivory); border-color: var(--ivory); }
 .hero .btn-outline { border-color: var(--ivory); color: var(--ivory); }
@@ -71,24 +149,96 @@ a { color: inherit; }
 
 /* ---------- Hero ---------- */
 .hero {
-  position: relative; padding: 140px 0 80px; background-color: var(--ink);
-  background-image: url('fundo-azul-sofisticado.png'); background-size: cover;
-  background-position: center; color: var(--ivory);
+  position: relative;
+  padding: 140px 0 80px;
+  overflow: hidden;
+  background-color: var(--ink);
+  background-image: url('fundo-azul-sofisticado.png');
+  background-size: cover;
+  background-position: center;
+  color: var(--ivory);
 }
-.hero-inner { display: grid; gap: 64px; align-items: center; }
-@media (min-width: 900px) { .hero-inner { grid-template-columns: 1.1fr 0.9fr; } }
-.hero h1 { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.1; margin: 0 0 24px; }
+
+.hero-inner {
+  display: grid;
+  gap: 64px;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .hero-inner { grid-template-columns: 1.1fr 0.9fr; }
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mint);
+  margin-bottom: 26px;
+  font-weight: 600;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: var(--mint);
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 5.4vw, 4.1rem);
+  line-height: 1.04;
+  color: var(--ivory);
+  margin: 0 0 26px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
 .hero h1 em { font-style: italic; color: var(--mint); }
-.hero p.lede { font-size: 1.15rem; max-width: 48ch; margin-bottom: 40px; color: rgba(255, 255, 255, 0.85); }
+
+.hero p.lede {
+  font-size: 1.08rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 46ch;
+  margin: 0 0 40px;
+}
+
 .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
 
 .hero-figure { display: flex; align-items: center; justify-content: center; }
 .hero-card {
-  background: rgba(255, 255, 255, 0.98); border-radius: var(--radius); padding: 24px;
-  width: 100%; max-width: 360px; box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: var(--radius);
+  padding: 24px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3);
 }
-.hero-card-title { font-family: var(--font-display); font-size: 0.9rem; color: var(--ink); margin-bottom: 16px; font-weight: 600; text-transform: uppercase; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
-.hero-card-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 0.88rem; color: var(--charcoal); }
+
+.hero-card-title {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--ink);
+  margin-bottom: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+
+.hero-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.88rem;
+  color: var(--charcoal);
+}
 .hero-card-row:last-child { border-bottom: none; }
 .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 12px; }
 .status-dot.free { background: #4a9b7f; }
@@ -99,10 +249,20 @@ a { color: inherit; }
 .mascote-flutuante { width: 140px; height: auto; animation: float 3.5s ease-in-out infinite; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.25)); pointer-events: auto; cursor: pointer; }
 @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
 
-/* ---------- Booking ---------- */
-section { padding: 116px 0; }
+/* ---------- Sections ---------- */
+section { padding: 116px 0; background: #ffffff; }
 .section-head { max-width: 60ch; margin: 0 auto 64px; text-align: center; }
-.section-head h2 { font-family: var(--font-display); font-size: clamp(1.9rem, 3.6vw, 2.7rem); color: var(--ink); margin: 0 0 16px; }
+.section-head .eyebrow { justify-content: center; }
+.section-head .eyebrow::before { display: none; }
+.section-head h2 { font-family: var(--font-display); font-size: clamp(1.9rem, 3.6vw, 2.7rem); color: var(--ink); margin: 0 0 16px; font-weight: 500; }
+.section-head p { color: var(--ink-soft); font-size: 1.02rem; }
+
+.services-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.service-card { background: #ffffff; padding: 40px 32px; transition: 0.2s ease; }
+.service-card:hover { background: var(--mint-pale); }
+.service-index { font-family: var(--font-display); font-size: 0.8rem; color: var(--coral-dark); letter-spacing: 0.1em; font-weight: 600; }
+.service-card h3 { font-family: var(--font-display); font-size: 1.28rem; margin: 14px 0 10px; color: var(--ink); }
+.service-meta { margin-top: 20px; font-size: 0.72rem; text-transform: uppercase; color: var(--ink-soft); padding-top: 16px; border-top: 1px solid var(--line); opacity: 0.8; }
 
 .booking-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
 @media (min-width: 880px) { .booking-grid { grid-template-columns: 1fr 1fr; } }
@@ -112,9 +272,7 @@ section { padding: 116px 0; }
 .service-picker { display: grid; gap: 10px; margin-bottom: 32px; }
 .chip { display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--line); padding: 14px 16px; cursor: pointer; font-size: 0.88rem; }
 .chip.selected { border: 1px solid var(--ink); background: var(--mint-pale); }
-.chip-duration { font-size: 0.72rem; text-transform: uppercase; color: var(--ink-soft); }
 
-.calendar-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }
 .day-cell { aspect-ratio: 1; border: 1px solid transparent; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.86rem; }
 .day-cell:disabled { color: #d4d4d4; cursor: not-allowed; }
@@ -128,17 +286,14 @@ section { padding: 116px 0; }
 .field { margin-bottom: 18px; }
 .field label { display: block; font-size: 0.72rem; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
 .field input, .field textarea { width: 100%; padding: 13px 14px; border: 1px solid var(--line); font-family: var(--font-body); }
-
 .summary-box { background: var(--mint-pale); border: 1px solid var(--line); padding: 16px 18px; font-size: 0.86rem; margin-bottom: 24px; }
 
-/* ---------- Admin ---------- */
+/* ---------- Admin Modal ---------- */
 .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 100; }
 .modal-overlay[hidden] { display: none; }
 .modal-box { background: #ffffff; padding: 36px; width: 100%; max-width: 600px; max-height: 80vh; overflow-y: auto; position: relative; }
 .modal-close { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
 .admin-item { border-bottom: 1px solid var(--line); padding: 16px 0; display: flex; justify-content: space-between; align-items: center; }
-.admin-item .who { font-weight: 600; color: var(--ink); }
-.admin-item .when { font-size: 0.8rem; color: var(--ink-soft); }
 
 @media (max-width: 640px) {
   .header-inner { padding: 18px 20px; }
@@ -157,7 +312,9 @@ section { padding: 116px 0; }
       <span class="brand-sub">Clínica Odontológica</span>
     </a>
     <nav class="main-nav">
+      <a href="#servicos">Serviços</a>
       <a href="#agendar">Agendar</a>
+      <a href="#sobre">A clínica</a>
       <a href="#contato">Contato</a>
     </nav>
     <a href="#agendar" class="btn btn-primary">Agendar horário</a>
@@ -172,10 +329,12 @@ section { padding: 116px 0; }
   <section class="hero">
     <div class="container hero-inner">
       <div>
+        <span class="eyebrow">Sorrisos cuidados com precisão</span>
         <h1>Sua consulta, <em>agendada em minutos</em>.</h1>
-        <p class="lede">Escolha o serviço e veja os horários realmente disponíveis. Simples e rápido.</p>
+        <p class="lede">Escolha o serviço, veja os horários realmente disponíveis e confirme seu atendimento sem ligações nem espera.</p>
         <div class="hero-actions">
-          <a href="#agendar" class="btn btn-primary">Agendar agora</a>
+          <a href="#agendar" class="btn btn-primary">Agendar horário</a>
+          <a href="#servicos" class="btn btn-outline">Ver serviços</a>
         </div>
       </div>
       <div class="hero-figure">
@@ -189,14 +348,28 @@ section { padding: 116px 0; }
     </div>
   </section>
 
-  <section id="agendar">
+  <section id="servicos">
     <div class="container">
       <div class="section-head">
-        <h2>Reserve seu horário online</h2>
+        <h2>Serviços para agendamento</h2>
+      </div>
+      <div class="services-grid">
+        <article class="service-card"><span class="service-index">01</span><h3>Avaliação</h3><p>Exame clínico completo e diagnóstico.</p><div class="service-meta">40 min</div></article>
+        <article class="service-card"><span class="service-index">02</span><h3>Limpeza</h3><p>Profilaxia e remoção de tártaro.</p><div class="service-meta">40 min</div></article>
+        <article class="service-card"><span class="service-index">03</span><h3>Clareamento</h3><p>Protocolo clareador supervisionado.</p><div class="service-meta">1h</div></article>
+        <article class="service-card"><span class="service-index">04</span><h3>Ortodontia</h3><p>Manutenção de aparelho e alinhadores.</p><div class="service-meta">40 min</div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking-section" id="agendar">
+    <div class="container">
+      <div class="section-head">
+        <h2>Escolha data e horário</h2>
       </div>
       <div class="booking-grid">
         <div class="panel">
-          <h3>1. Escolha o serviço e data</h3>
+          <h3>1. Serviço e Data</h3>
           <div class="service-picker" id="servicePicker"></div>
           <div class="calendar-nav">
             <button id="prevMonth">‹</button>
@@ -207,7 +380,7 @@ section { padding: 116px 0; }
           <div class="slots-grid" id="slotsWrap"></div>
         </div>
         <div class="panel">
-          <h3>2. Seus dados</h3>
+          <h3>2. Confirmar Reserva</h3>
           <div class="summary-box" id="summaryBox">Selecione os detalhes ao lado.</div>
           <form id="bookingForm">
             <div class="field"><label>Nome completo</label><input type="text" id="fldName" required></div>
@@ -275,7 +448,6 @@ let state = {
   appointments: []
 };
 
-// Real-time sync
 onSnapshot(colRef, (snapshot) => {
   state.appointments = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   renderSlots();
@@ -299,27 +471,21 @@ function renderCalendar() {
   const grid = document.getElementById('calendarGrid');
   const label = document.getElementById('calendarMonthLabel');
   grid.innerHTML = '';
-  
   const year = state.viewDate.getFullYear();
   const month = state.viewDate.getMonth();
   label.textContent = new Date(year, month).toLocaleString('pt-BR', { month: 'long', year: 'numeric' });
-
   const firstDay = new Date(year, month, 1).getDay();
   const lastDate = new Date(year, month + 1, 0).getDate();
   const today = new Date(); today.setHours(0,0,0,0);
-
   for (let i = 0; i < firstDay; i++) grid.appendChild(document.createElement('div'));
-
   for (let d = 1; d <= lastDate; d++) {
     const btn = document.createElement('button');
     btn.className = 'day-cell';
     btn.textContent = d;
     const dateObj = new Date(year, month, d);
     dateObj.setHours(0,0,0,0);
-    
     if (dateObj < today) btn.disabled = true;
     if (state.selectedDate?.getTime() === dateObj.getTime()) btn.classList.add('selected');
-    
     btn.onclick = () => { state.selectedDate = dateObj; renderCalendar(); renderSlots(); updateSummary(); };
     grid.appendChild(btn);
   }
@@ -329,10 +495,8 @@ function renderSlots() {
   const wrap = document.getElementById('slotsWrap');
   wrap.innerHTML = '';
   if (!state.selectedService || !state.selectedDate) return;
-
   const dateStr = state.selectedDate.toISOString().split('T')[0];
   const booked = state.appointments.filter(a => a.date === dateStr).map(a => a.time);
-
   for (let h = 8; h < 18; h++) {
     for (let m of ['00', '30']) {
       const time = `${h.toString().padStart(2, '0')}:${m}`;
@@ -351,7 +515,6 @@ function renderNextSlots() {
   container.innerHTML = '';
   const todayStr = new Date().toISOString().split('T')[0];
   const bookedToday = state.appointments.filter(a => a.date === todayStr).map(a => a.time);
-  
   const displaySlots = ['09:00', '14:00', '16:30'];
   displaySlots.forEach(t => {
     const isBusy = bookedToday.includes(t);
