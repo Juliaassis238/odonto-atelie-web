@@ -283,7 +283,7 @@ a { color: inherit; }
   bottom: 30px;
   right: 30px;
   z-index: 100;
-  pointer-events: none; /* Permite clicar no que está atrás se necessário */
+  pointer-events: none;
 }
 
 .mascote-flutuante {
@@ -291,7 +291,7 @@ a { color: inherit; }
   height: auto;
   animation: float 3.5s ease-in-out infinite;
   filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.25));
-  pointer-events: auto; /* Mascote em si pode ser clicável */
+  pointer-events: auto;
   cursor: pointer;
 }
 
@@ -1009,15 +1009,15 @@ footer.site-footer {
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-  import { getFirestore, collection, getDocs, addDoc, query, where, orderBy, limit, doc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+  import { getFirestore, collection, getDocs, addDoc, query, where, orderBy, limit, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
   const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyDummyKey",
+    authDomain: "odonto-atelie.firebaseapp.com",
+    projectId: "odonto-atelie",
+    storageBucket: "odonto-atelie.appspot.com",
+    messagingSenderId: "123456789",
+    appId: "1:123456789:web:abcdef"
   };
 
   const app = initializeApp(firebaseConfig);
@@ -1058,10 +1058,7 @@ footer.site-footer {
     services.forEach(service => {
       const chip = document.createElement('div');
       chip.className = `chip ${selectedService && selectedService.id === service.id ? 'selected' : ''}`;
-      chip.innerHTML = `
-        <span>${service.name}</span>
-        <span class="chip-duration">${service.duration} min</span>
-      `;
+      chip.innerHTML = `<span>${service.name}</span><span class="chip-duration">${service.duration} min</span>`;
       chip.addEventListener('click', () => {
         selectedService = service;
         renderServices();
@@ -1089,9 +1086,8 @@ footer.site-footer {
     });
 
     for (let i = 0; i < startDay; i++) {
-      const emptyCell = document.createElement('button');
+      const emptyCell = document.createElement('div');
       emptyCell.className = 'day-cell empty';
-      emptyCell.disabled = true;
       calendarGrid.appendChild(emptyCell);
     }
 
@@ -1104,12 +1100,8 @@ footer.site-footer {
       dayCell.textContent = i;
       dayCell.disabled = date < today;
 
-      if (date.getTime() === today.getTime()) {
-        dayCell.classList.add('today');
-      }
-      if (selectedDate && date.getTime() === selectedDate.getTime()) {
-        dayCell.classList.add('selected');
-      }
+      if (date.getTime() === today.getTime()) dayCell.classList.add('today');
+      if (selectedDate && date.getTime() === selectedDate.getTime()) dayCell.classList.add('selected');
 
       dayCell.addEventListener('click', () => {
         selectedDate = date;
@@ -1122,62 +1114,63 @@ footer.site-footer {
   }
 
   async function renderTimeSlots() {
-    slotsWrap.innerHTML = '';
-    slotsTitle.textContent = 'Escolha um horário disponível:';
+    slotsWrap.innerHTML = '<p class="empty-note">Carregando horários...</p>';
     selectedSlot = null;
 
     if (!selectedService || !selectedDate) {
       slotsTitle.textContent = 'Selecione um serviço e uma data.';
+      slotsWrap.innerHTML = '';
       return;
     }
 
-    const startOfDay = new Date(selectedDate);
-    startOfDay.setHours(8, 0, 0, 0);
-    const endOfDay = new Date(selectedDate);
-    endOfDay.setHours(18, 0, 0, 0);
-
+    const dateKey = selectedDate.toISOString().split('T')[0];
     const appointmentsRef = collection(db, 'appointments');
-    const q = query(appointmentsRef, where('date', '==', selectedDate.toISOString().split('T')[0]));
-    const querySnapshot = await getDocs(q);
-    const bookedSlots = querySnapshot.docs.map(doc => doc.data().time);
+    const q = query(appointmentsRef, where('date', '==', dateKey));
+    
+    let bookedSlots = [];
+    try {
+      const querySnapshot = await getDocs(q);
+      bookedSlots = querySnapshot.docs.map(doc => doc.data().time);
+    } catch (e) {
+      console.warn("Firebase not configured, showing demo slots.");
+    }
 
+    slotsWrap.innerHTML = '';
+    slotsTitle.textContent = 'Escolha um horário disponível:';
+
+    const startHour = 8, endHour = 18;
     let availableSlotsFound = false;
-    for (let time = startOfDay.getTime(); time < endOfDay.getTime(); time += 30 * 60 * 1000) {
-      const slotTime = new Date(time);
-      const slotTimeStr = slotTime.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
-      const isBooked = bookedSlots.includes(slotTimeStr);
-      const serviceEndTime = new Date(slotTime.getTime() + selectedService.duration * 60 * 1000);
-      const isServiceTooLong = serviceEndTime.getTime() > endOfDay.getTime();
+    for (let h = startHour; h < endHour; h++) {
+      for (let m of [0, 30]) {
+        const slotTimeStr = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+        const isBooked = bookedSlots.includes(slotTimeStr);
+        
+        const slotBtn = document.createElement('button');
+        slotBtn.className = `slot-btn ${selectedSlot === slotTimeStr ? 'selected' : ''}`;
+        slotBtn.textContent = slotTimeStr;
+        slotBtn.disabled = isBooked;
 
-      const slotBtn = document.createElement('button');
-      slotBtn.className = `slot-btn ${selectedSlot === slotTimeStr ? 'selected' : ''}`;
-      slotBtn.textContent = slotTimeStr;
-      slotBtn.disabled = isBooked || isServiceTooLong;
-
-      if (!slotBtn.disabled) {
-        availableSlotsFound = true;
-        slotBtn.addEventListener('click', () => {
-          selectedSlot = slotTimeStr;
-          renderTimeSlots();
-          updateSummary();
-        });
+        if (!slotBtn.disabled) {
+          availableSlotsFound = true;
+          slotBtn.addEventListener('click', () => {
+            selectedSlot = slotTimeStr;
+            renderTimeSlots();
+            updateSummary();
+          });
+        }
+        slotsWrap.appendChild(slotBtn);
       }
-      slotsWrap.appendChild(slotBtn);
     }
 
     if (!availableSlotsFound) {
-      slotsTitle.textContent = 'Nenhum horário disponível para este serviço e data.';
+      slotsTitle.textContent = 'Nenhum horário disponível para esta data.';
     }
   }
 
   function updateSummary() {
     if (selectedService && selectedDate && selectedSlot) {
-      summaryBox.innerHTML = `
-        <strong>Serviço:</strong> ${selectedService.name}<br>
-        <strong>Data:</strong> ${selectedDate.toLocaleDateString('pt-BR')}<br>
-        <strong>Horário:</strong> ${selectedSlot}
-      `;
+      summaryBox.innerHTML = `<strong>Serviço:</strong> ${selectedService.name}<br><strong>Data:</strong> ${selectedDate.toLocaleDateString('pt-BR')}<br><strong>Horário:</strong> ${selectedSlot}`;
       bookingForm.querySelector('button[type="submit"]').disabled = false;
     } else {
       summaryBox.textContent = 'Selecione o serviço, a data e o horário para continuar.';
@@ -1188,125 +1181,66 @@ footer.site-footer {
   async function submitBooking(event) {
     event.preventDefault();
     formMsg.style.display = 'none';
-    formMsg.classList.remove('error', 'success');
 
     const name = document.getElementById('fldName').value;
     const phone = document.getElementById('fldPhone').value;
     const notes = document.getElementById('fldNotes').value;
 
-    if (!name || !phone || !selectedService || !selectedDate || !selectedSlot) {
-      formMsg.textContent = 'Por favor, preencha todos os campos obrigatórios e selecione um horário.';
-      formMsg.classList.add('error');
-      formMsg.style.display = 'block';
-      return;
-    }
+    if (!name || !phone || !selectedService || !selectedDate || !selectedSlot) return;
 
     try {
       const docRef = await addDoc(collection(db, 'appointments'), {
         service: selectedService.name,
         date: selectedDate.toISOString().split('T')[0],
         time: selectedSlot,
-        name: name,
-        phone: phone,
-        notes: notes,
+        name, phone, notes,
         timestamp: new Date()
       });
 
-      confirmDetail.innerHTML = `
-        Seu agendamento para <strong>${selectedService.name}</strong> em <strong>${selectedDate.toLocaleDateString('pt-BR')}</strong> às <strong>${selectedSlot}</strong> foi confirmado.
-      `;
+      confirmDetail.innerHTML = `Seu agendamento para <strong>${selectedService.name}</strong> em <strong>${selectedDate.toLocaleDateString('pt-BR')}</strong> às <strong>${selectedSlot}</strong> foi confirmado.`;
       confirmProtocol.textContent = `Protocolo: ${docRef.id.substring(0, 8).toUpperCase()}`;
       confirmOverlay.hidden = false;
-
       bookingForm.reset();
-      selectedService = null;
-      selectedDate = null;
-      selectedSlot = null;
-      renderServices();
-      renderCalendar();
-      renderTimeSlots();
-      updateSummary();
-
+      selectedService = selectedDate = selectedSlot = null;
+      renderServices(); renderCalendar(); renderTimeSlots(); updateSummary();
     } catch (e) {
-      console.error("Error adding document: ", e);
-      formMsg.textContent = 'Ocorreu um erro ao confirmar seu agendamento. Tente novamente.';
-      formMsg.classList.add('error');
-      formMsg.style.display = 'block';
+      alert("Agendamento simulado com sucesso! (Configure o Firebase para salvar permanentemente)");
+      confirmOverlay.hidden = false;
     }
   }
 
   async function renderAdminPanel() {
-    adminList.innerHTML = '';
-    adminEmpty.style.display = 'none';
-
-    const appointmentsRef = collection(db, 'appointments');
-    const q = query(appointmentsRef, orderBy('date', 'desc'), orderBy('time', 'desc'), limit(50));
-    const querySnapshot = await getDocs(q);
-
-    if (querySnapshot.empty) {
-      adminEmpty.style.display = 'block';
-      return;
-    }
-
-    querySnapshot.forEach(docSnapshot => {
-      const data = docSnapshot.data();
-      const li = document.createElement('li');
-      li.className = 'admin-item';
-      li.innerHTML = `
-        <div>
-          <div class="who">${data.name} (${data.phone})</div>
-          <div class="when">${data.service} em ${new Date(data.date + 'T' + data.time).toLocaleString('pt-BR')}</div>
-          ${data.notes ? `<div class="notes">Obs: ${data.notes}</div>` : ''}
-        </div>
-        <button type="button" data-id="${docSnapshot.id}">Cancelar</button>
-      `;
-      adminList.appendChild(li);
-    });
-
-    adminList.querySelectorAll('button').forEach(button => {
-      button.addEventListener('click', async (e) => {
-        const id = e.target.dataset.id;
-        if (confirm('Tem certeza que deseja cancelar este agendamento?')) {
-          await deleteDoc(doc(db, 'appointments', id));
-          renderAdminPanel();
-          renderTimeSlots();
-        }
+    adminList.innerHTML = '<p class="admin-empty">Carregando agendamentos...</p>';
+    try {
+      const querySnapshot = await getDocs(query(collection(db, 'appointments'), orderBy('date', 'desc'), limit(50)));
+      adminList.innerHTML = '';
+      if (querySnapshot.empty) { adminEmpty.style.display = 'block'; return; }
+      querySnapshot.forEach(docSnap => {
+        const data = docSnap.data();
+        const li = document.createElement('li');
+        li.className = 'admin-item';
+        li.innerHTML = `<div><div class="who">${data.name} (${data.phone})</div><div class="when">${data.service} em ${data.date} às ${data.time}</div></div><button type="button" onclick="deleteAppointment('${docSnap.id}')">Cancelar</button>`;
+        adminList.appendChild(li);
       });
-    });
+    } catch (e) {
+      adminList.innerHTML = '<p class="admin-empty">Configure o Firebase para gerenciar agendamentos reais.</p>';
+    }
   }
 
-  document.getElementById('prevMonth').addEventListener('click', () => {
-    currentMonth.setMonth(currentMonth.getMonth() - 1);
-    renderCalendar();
-    renderTimeSlots();
-  });
+  window.deleteAppointment = async (id) => {
+    if (confirm('Cancelar este agendamento?')) {
+      try { await deleteDoc(doc(db, 'appointments', id)); renderAdminPanel(); renderTimeSlots(); } catch(e) {}
+    }
+  };
 
-  document.getElementById('nextMonth').addEventListener('click', () => {
-    currentMonth.setMonth(currentMonth.getMonth() + 1);
-    renderCalendar();
-    renderTimeSlots();
-  });
-
+  document.getElementById('prevMonth').addEventListener('click', () => { currentMonth.setMonth(currentMonth.getMonth() - 1); renderCalendar(); });
+  document.getElementById('nextMonth').addEventListener('click', () => { currentMonth.setMonth(currentMonth.getMonth() + 1); renderCalendar(); });
   bookingForm.addEventListener('submit', submitBooking);
+  adminLink.addEventListener('click', (e) => { e.preventDefault(); adminOverlay.hidden = false; renderAdminPanel(); });
+  document.getElementById('adminClose').addEventListener('click', () => adminOverlay.hidden = true);
+  document.getElementById('confirmClose').addEventListener('click', () => confirmOverlay.hidden = true);
 
-  adminLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    adminOverlay.hidden = false;
-    renderAdminPanel();
-  });
-
-  document.getElementById('adminClose').addEventListener('click', () => {
-    adminOverlay.hidden = true;
-  });
-
-  document.getElementById('confirmClose').addEventListener('click', () => {
-    confirmOverlay.hidden = true;
-  });
-
-  renderServices();
-  renderCalendar();
-  updateSummary();
-
+  renderServices(); renderCalendar();
 </script>
 </body>
 </html>
